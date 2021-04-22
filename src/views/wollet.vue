@@ -8,12 +8,12 @@
         <div style="height:12vw;"></div>
         <div class="money">
             <div class="top flex ali_center">
-                <div class="type">折合资产【CNY】</div>
+                <div class="type">资产【USDT】</div>
                 <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
                 <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i>
             </div>
             <div class="cny_num">
-                <div class="num" v-if="iconeyeclose">≈ {{sysmoney}}</div>
+                <div class="num" v-if="iconeyeclose">= {{sysmoney}}</div>
                 <div class="num" v-else>* * * *</div>
             </div>
             <div class="btns flex flex_around ali_center">
@@ -30,13 +30,13 @@
             <div @click="godetail(`CNY/${cny}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/1.png" alt="" />
-                    <span>CNY</span>
+                    <span>FC拼单积分</span>
                 </div>
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{cny}}</div>
                     <div class="num" v-else>* * * *</div>
-                    <span class="num1" v-if="iconeyeclose">≈{{cny}}CNY</span>
-                    <div class="num1" v-else>* * * *</div>
+                    <!-- <span class="num1" v-if="iconeyeclose">≈{{cny}}CNY</span>
+                    <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
             <div @click="godetail(`USDT/${usdt}`)" class="item flex ali_center">
@@ -47,44 +47,44 @@
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{usdt}}</div>
                     <div class="num" v-else>* * * *</div>
-                    <span class="num1" v-if="iconeyeclose">≈ {{usdttocny}}CNY</span>
-                    <div class="num1" v-else>* * * *</div>
+                    <!-- <span class="num1" v-if="iconeyeclose">≈ {{usdttocny}}CNY</span>
+                    <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
             <div @click="godetail(`BTC/${btc}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/4.png" alt="" />
-                    <span>BTC</span>
+                    <span>FIL</span>
                 </div>
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{btc}}</div>
                     <div class="num" v-else>* * * *</div>
-                    <span class="num1" v-if="iconeyeclose">≈ {{btctocny}}CNY</span>
-                    <div class="num1" v-else>* * * *</div>
+                    <!-- <span class="num1" v-if="iconeyeclose">≈ {{btctocny}}CNY</span>
+                    <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
             <div @click="godetail(`ETH/${eth}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/2.png" alt="" />
-                    <span>ETH</span>
+                    <span>FIL平台币</span>
                 </div>
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{eth}}</div>
                     <div class="num" v-else>* * * *</div>
-                    <span class="num1" v-if="iconeyeclose">≈ {{ethtocny}}CNY</span>
-                    <div class="num1" v-else>* * * *</div>
+                    <!-- <span class="num1" v-if="iconeyeclose">≈ {{ethtocny}}CNY</span>
+                    <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
             <div @click="godetail(`FIL/${fil}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/3.png" alt="" />
-                    <span>FIL</span>
+                    <span>忠诚度</span>
                 </div>
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{fil}}</div>
                     <div class="num" v-else>* * * *</div>
-                    <span class="num1" v-if="iconeyeclose">≈ {{filtocny}}CNY</span>
-                    <div class="num1" v-else>* * * *</div>
+                    <!-- <span class="num1" v-if="iconeyeclose">≈ {{filtocny}}CNY</span>
+                    <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
         </div>
@@ -97,17 +97,17 @@
             <div v-if="type != 3" class="item flex ali_center" @click="gonext('CNY')">
                 <img src="@/assets/images/icon/1.png" alt="">
                 <div class="info">
-                    <div class="num">CNY</div>
-                    <div class="type">余额：{{cny}}CNY</div>
+                    <div class="num">FC拼单积分</div>
+                    <div class="type">余额：{{cny}}FC</div>
                 </div>
             </div>
-            <div class="item flex ali_center" @click="gonext('BTC')">
+            <!-- <div class="item flex ali_center" @click="gonext('BTC')">
                 <img src="@/assets/images/icon/4.png" alt="">
                 <div class="info">
                     <div class="num">BTC</div>
                     <div class="type">余额：{{btc}}BTC</div>
                 </div>
-            </div>
+            </div> -->
             <div v-if="type != 3" class="item flex ali_center" @click="gonext('USDT')">
                 <img src="@/assets/images/icon/5.png" alt="">
                 <div class="info">
@@ -115,20 +115,20 @@
                     <div class="type">余额：{{usdt}}USDT</div>
                 </div>
             </div>
-            <div class="item flex ali_center" @click="gonext('ETH')">
+            <!-- <div class="item flex ali_center" @click="gonext('ETH')">
                 <img src="@/assets/images/icon/2.png" alt="">
                 <div class="info">
                     <div class="num">ETH</div>
                     <div class="type">余额：{{eth}}ETH</div>
                 </div>
-            </div>
-            <div class="item flex ali_center" @click="gonext('FIL')">
+            </div> -->
+            <!-- <div class="item flex ali_center" @click="gonext('FIL')">
                 <img src="@/assets/images/icon/3.png" alt="">
                 <div class="info">
                     <div class="num">FIL</div>
                     <div class="type">余额：{{fil}}FIL</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

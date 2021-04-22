@@ -7,28 +7,28 @@
         </div>
         <div class="nav flex ali_center flex_between">
             <div class="item on">
-                CNY充值
+                承兑商充值
             </div>
             <div class="item" @click="gopage('/exchange/USDT/转入')">
                 USDT转入
             </div>
         </div>
         <div class="money">
-            <div class="type">账户余额(CNY)</div>
+            <div class="type">账户余额(FC拼单积分)</div>
             <div class="num">{{money}}</div>
         </div>
         <div class="buy_num">
             <div class="title">购买数量</div>
             <div class="input flex ali_center flex_between">
                 <input type="number" v-model="num" placeholder="请输入您的充值金额，限整数" style="width: 75%;"/>
-                <span>CNY数量</span>
+                <span>FC数量</span>
             </div>
-            <div class="tips flex ali_center flex_between">
+            <!-- <div class="tips flex ali_center flex_between">
                 <span>CNY实时单价≈1元/CNY</span>
                 <span v-if="num">实付{{paynum}}元</span>
-            </div>
+            </div> -->
         </div>
-        <div class="pay_ways">
+        <!-- <div class="pay_ways">
             <div class="title">支付方式</div>
             <div class="item flex ali_center flex_between" @click="change('bank')">
                 <div class="flex ali_center">
@@ -39,20 +39,20 @@
                 <img v-if="paytype == 'bank'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
-            <!-- <div class="item flex ali_center flex_between" @click="change('wechat')">
+            <div class="item flex ali_center flex_between" @click="change('wechat')">
                 <div class="flex ali_center">
                     <img src="@/assets/images/icon/wx.png" class="icon" alt="" />
                     <span>微信支付</span>
                 </div>
                 <img v-if="paytype == 'wechat'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
-            </div> -->
-        </div>
+            </div>
+        </div> -->
         <div class="tip">
             <div class="title">温馨提示:</div>
-            <div class="red">1.请在转账时备注哈希矿场张虎手机号码(请勿备注含矿机、数字货币、比特比、以太坊或者英文BTC、ETH等自言),如有敏感字眼的备注将不做充值处理，七天后所转账的金额安原路返还</div>
-            <div class="grey">2.如有任何疑问请联系哈希矿场官方客服(请在工作日9：00-18：00之间完成充值)</div>
-            <div class="grey">3.仅支持储蓄卡充值</div>
+            <div class="red">1.点击充值，填入需充值金额，点击提交，显示充值订单，承兑商ID，承兑商手机号码，会员可根据承兑商的电话号码，联系承兑商进行充值，充值订单在承兑商账户显示，会员联系承兑商，线下转款之后，承兑商可在线上确认订单充值，自动划分余额到会员账户上</div>
+            <!-- <div class="grey">2.如有任何疑问请联系哈希矿场官方客服(请在工作日9：00-18：00之间完成充值)</div>
+            <div class="grey">3.仅支持储蓄卡充值</div> -->
         </div>
         <div class="submit" @click="recharge">立即充值</div>
     </div>

@@ -7,8 +7,8 @@
         </div>
         <div style="height:12vw"></div>
         <div class="top">
-            <div class="time">请在30分钟内完成转账</div>
-            <div class="tips">建议使用本人名下的银行卡进行转账</div>
+            <div class="time">请在30分钟内联系承兑商完成转账</div>
+            <!-- <div class="tips">建议使用本人名下的银行卡进行转账</div> -->
         </div>
         <div class="order_info flex ali_center">
             <div class="left">
@@ -18,11 +18,11 @@
             <div class="right">
                 <div class="flex item1 flex_between ali_center">
                     <span>单价</span>
-                    <p>{{rate}}CNY</p>
+                    <p>{{rate}}FC</p>
                 </div>
                 <div class="flex flex_between ali_center">
                     <span>数量</span>
-                    <p>{{num}}CNY</p>
+                    <p>{{num}}FC</p>
                 </div>
             </div>
         </div>
@@ -32,20 +32,20 @@
                 <span>对公账户</span>
             </div>
             <div class="item flex ali_center flex_between">
-                <div class="left">收款方户名</div>
+                <div class="left">承兑商ID</div>
                 <div class="right flex ali_center">
                     <span class="infos">{{realname}}</span>
                     <span class="copy" :data-clipboard-text="realname">复制</span>
                 </div>
             </div>
             <div class="item flex ali_center flex_between">
-                <div class="left">收款方账户</div>
+                <div class="left">承兑商手机号码</div>
                 <div class="right flex ali_center">
                     <span class="infos">{{bankcard}}</span>
                     <span class="copy" :data-clipboard-text="bankcard">复制</span>
                 </div>
             </div>
-            <div class="item flex ali_center flex_between">
+            <!-- <div class="item flex ali_center flex_between">
                 <div class="left">收款方银行</div>
                 <div class="right flex ali_center">
                     <span class="infos">{{bankname}}</span>
@@ -58,9 +58,9 @@
                     <span class="infos">{{ordersn}}</span>
                     <span class="copy" :data-clipboard-text="ordersn">复制</span>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="mineInfo">
+        <!-- <div class="mineInfo">
             <div class="num flex flex_between ali_center">
                 <div class="title">转款卡主姓名</div>
                 <input v-model="zhuanname" type="text" placeholder="请输入卡主姓名" />
@@ -70,13 +70,13 @@
                 <van-uploader :after-read="afterRead" v-if="!baseimg" />
                 <img :src="baseimg" alt="" v-if="baseimg" >
             </div>
-        </div>
-        <div class="tip">
+        </div> -->
+        <!-- <div class="tip">
             <div class="title">温馨提示:</div>
             <div class="red">1.请在转账时备注矿金所张虎手机号码(请勿备注含矿机、数字货币、比特比、以太坊或者英文BTC、ETH等自言),如有敏感字眼的备注将不做充值处理，七天后所转账的金额安原路返还</div>
             <div class="grey">2.如有任何疑问请联系矿金所官方客服(请在工作日9：00-18：00之间完成充值)</div>
-            <div class="grey">3.仅支持储蓄卡充值</div>
-        </div>
+            <div class="grey">1.仅支持储蓄卡充值</div>
+        </div> -->
         <div class="submit" :class="{on: money}" @click="submit">我已付款成功</div>
     </div>
 </template>

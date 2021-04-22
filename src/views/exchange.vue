@@ -14,15 +14,15 @@
            
 
             <div class="name">{{typetype}}{{type}}</div>
-            <div class="change flex ali_center" @click="show = true">
+            <!-- <div class="change flex ali_center" @click="show = true">
                 <span>{{typetype}}</span>
                 <van-icon name="arrow"></van-icon>
-            </div>
-            <div v-if="type == 'USDT'" class="types flex ali_center">
+            </div> -->
+            <!-- <div v-if="type == 'USDT'" class="types flex ali_center">
                 <span>链类型：</span>
                 <div class="on" @click="changenav('ERC')">TRC20</div>
                 <div @click="changenav('TRC')">ERC20</div>
-            </div>
+            </div> -->
             <img class="code" :src="code" alt="" />
             <div class="address">{{wallet}}</div>
             <div class="btns flex ali_center flex_between">

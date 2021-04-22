@@ -14,7 +14,7 @@
                 <div class="mobile">{{mobile}}</div>
             </div>
             <div class="mini">
-                <van-button type="primary" size="mini">{{mini}}</van-button>
+                <van-button type="primary" size="mini" @click="minihandle">{{mini}}</van-button>
             </div>
         </div>
         <div class="nav flex ali_center flex_between">
@@ -138,6 +138,7 @@ import bottomNav from "../common/footernav";
 import service from "../common/service";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/swiper-bundle.css";
+import { Toast } from 'vant';
 export default {
     name: "user",
     components: {
@@ -172,6 +173,9 @@ export default {
         this.getlist()
     },
     methods: {
+        minihandle(){
+            Toast('签到成功')
+        },
         closeservice(e) {
             this.showService = false;
         },
