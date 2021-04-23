@@ -27,7 +27,7 @@
                 <div class="left">币种</div>
                 <div class="right">可用</div>
             </div>
-            <div @click="godetail(`CNY/${cny}`)" class="item flex ali_center">
+            <div @click="godetail(`FC拼单积分/${cny}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/1.png" alt="" />
                     <span>FC拼单积分</span>
@@ -51,7 +51,7 @@
                     <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
-            <div @click="godetail(`BTC/${btc}`)" class="item flex ali_center">
+            <div @click="godetail(`FIL/${btc}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/4.png" alt="" />
                     <span>FIL</span>
@@ -63,7 +63,7 @@
                     <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
-            <div @click="godetail(`ETH/${eth}`)" class="item flex ali_center">
+            <div @click="godetail(`FIL平台币/${eth}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/2.png" alt="" />
                     <span>FIL平台币</span>
@@ -75,7 +75,7 @@
                     <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
-            <div @click="godetail(`FIL/${fil}`)" class="item flex ali_center">
+            <div @click="godetail(`忠诚度/${fil}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/3.png" alt="" />
                     <span>忠诚度</span>
@@ -94,7 +94,7 @@
                 <span>选择币种</span>
                 <van-icon name="cross" @click="showmask = false"></van-icon>
             </div>
-            <div v-if="type != 3" class="item flex ali_center" @click="gonext('CNY')">
+            <div v-if="type == 33" class="item flex ali_center" @click="gonext('CNY')">
                 <img src="@/assets/images/icon/1.png" alt="">
                 <div class="info">
                     <div class="num">FC拼单积分</div>

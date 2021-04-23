@@ -43,6 +43,11 @@
                 <div class="title">转账地址</div>
                 <input v-model="address" type="text" placeholder="输入转账地址" />
             </div> -->
+            <div class="img flex flex_between ali_center">
+                <div class="title">完成转账截图</div>
+                <van-uploader :after-read="afterRead" v-if="!baseimg" />
+                <img :src="baseimg" alt="" v-if="baseimg" >
+            </div>
             
         </div>
         <div class="tips">
