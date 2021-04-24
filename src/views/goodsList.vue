@@ -59,8 +59,25 @@ export default {
             default: () => []
         }
     },
-    mounted() {},
+    mounted() {
+
+    },
     methods: {
+      async getData(){
+        let res = await $ajax('userrechargelogs', {getType: this.typenum, page: this.page, accountType: 1, status: this.status})  //充值
+            if(!res) return false
+            console.log(res)
+            // this.money = res.money
+           
+            this.page++
+            console.log(res.list)
+            this.list.push(...res.list)
+            // // 加载状态结束
+            this.loading = false
+            if (res.list.length === 0) {
+                this.finished = true //加载完成
+            } 
+      }
     }
 }
 </script>

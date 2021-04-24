@@ -2,7 +2,7 @@ export default [
     {
         path: '/',
         name: 'home',
-        redirect: { name: 'index' },
+        redirect: { name: 'kqp_index' },
         component: () => import("@/views/home"),
         meta:{
             index: 0,
@@ -10,9 +10,9 @@ export default [
         },
         children: [
             {
-                path: '/index', // 首页
-                name: 'index',
-                component: () => import("@/views/home/index.vue"),
+                path: '/kqp_index', // 首页
+                name: 'kqp_index',
+                component: () => import("@/views/home/pintuan.vue"),
                 props: false,//1111,
                 meta:{
                     index: 1,

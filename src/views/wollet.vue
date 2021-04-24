@@ -20,6 +20,7 @@
                 <span class="recharge" @click="changetype(1)">转入</span>
                 <span class="cash" @click="changetype(2)">转出</span>
                 <span class="exchange" @click="changetype(3)">兑换</span>
+                <span class="huzhuan" @click="changetype(4)">互转</span>
             </div>
         </div>
         <div class="list">
@@ -201,7 +202,12 @@ export default {
         },
         changetype(index) {
             this.type = index;
-            this.showmask = true;
+            if(this.type == 4){ //去互转
+                this.$router.push('/huzhuan');
+            }else{
+                this.showmask = true;
+            }
+            
         },
         gonext(type) {
             if (this.type == 1 ) { //去充值
@@ -234,6 +240,7 @@ export default {
                     this.$router.push('/changeType/' + type + "/" + this.fil);
                 }
             }
+            
         },
         godetail(type) {
             this.$router.push('/moneyDetail/' + type);
@@ -299,7 +306,7 @@ export default {
         .btns {
             padding: 6vw 0 0;
             span {
-                width: 32%;
+                width: 22%;
                 line-height: 10vw;
                 font-size: 3.47vw;
                 height: 10vw;

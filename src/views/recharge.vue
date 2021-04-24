@@ -14,15 +14,16 @@
             </div>
         </div>
         <div class="money">
-            <div class="type">账户余额(FC拼单积分)</div>
-            <div class="num">{{money}}</div>
+            <div class="type">FC拼单积分</div>
+            <div class="num">100</div>
         </div>
         <div class="buy_num">
-            <div class="title">购买数量</div>
+            <div class="title">充值FC拼单积分</div>
             <div class="input flex ali_center flex_between">
-                <input type="number" v-model="num" placeholder="请输入您的充值金额，限整数" style="width: 75%;"/>
-                <span>FC数量</span>
+                <input type="number" v-model="num" placeholder="请输入FC拼单积分，限整数" style="width: 75%;"/>
+                <span>FC</span>
             </div>
+            <div class="title">提示：整50倍数充值</div>
             <!-- <div class="tips flex ali_center flex_between">
                 <span>CNY实时单价≈1元/CNY</span>
                 <span v-if="num">实付{{paynum}}元</span>
@@ -172,16 +173,17 @@ export default {
         margin: 5vw 4vw;
         text-align: center;
         height: 30vw;
-        background: #f7f7f7;
+        background: #da428d;
         .type {
             line-height: 15vw;
             font-size: 3.47vw;
-            color: #666;
+            color: #FFF;
         }
         .num {
             margin-top: -5vw;
             font-weight: 600;
             font-size: 10vw;
+            color: #fff;
         }
     }
     .buy_num {

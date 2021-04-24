@@ -1,14 +1,14 @@
 <template>
-    <div class="record">
+    <div class="cdslist">
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
-            <p>{{title}}</p>
+            <p>承兑商</p>
         </div>
-        <div class="nav flex ali_center">
-            <div class="item" @click="changenav(index)" :class="{on:index == status}" v-for="(item, index) in navlist" :key="index">
+        <!-- <div class="nav flex ali_center">
+            <div class="item"   v-for="(item, index) in navlist" :key="index">
                 {{item}}
             </div>
-        </div>
+        </div> -->
         <div class="list" >
             <van-list
                 v-model="loading"
@@ -54,7 +54,7 @@ export default {
         return {
             title: '',
             status: 0,
-            navlist: ['全部','处理中','已完成','已取消'],
+            navlist: ['好友充值'],
             typenum: 1,
             list: [],
             page: 1,
@@ -139,7 +139,7 @@ export default {
 * {
     box-sizing: border-box;
 }
-.record {
+.cdslist {
     background: #f7f7f7 !important;
     .header {
         width: 100%;
@@ -212,7 +212,7 @@ export default {
                 .left {
                     width: 60%;
                     .type {
-                        font-size: 3.2vw;
+                        font-size: 4.2vw;
                     }
                     .num {
                         font-size: 6vw;

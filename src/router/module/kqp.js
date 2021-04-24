@@ -79,4 +79,24 @@ export default [
             mustLogin: true,//
         }
     },
+    {
+        path: '/cdslist', // 承兑商 好友充值
+        name: 'cdslist',
+        component: () => import("@/views/cdslist.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
+    {
+        path: '/huzhuan', // 互转
+        name: 'huzhuan',
+        component: () => import("@/views/huzhuan.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
 ]

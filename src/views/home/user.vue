@@ -75,7 +75,7 @@
             </div>
         </div> -->
         <div class="all_money flex ali_center flex_between">
-            <div class="left">资产预估(CNY) <span>≈ {{credit2}}</span></div>
+            <div class="left">  <!-- 资产预估(CNY) <span>≈ {{credit2}}</span> --></div>
             <div class="right flex ali_center" >
                 <div class="cash" @click="$router.push('/cash')">提现</div>
                 <p></p>
@@ -90,20 +90,20 @@
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div> -->
-            <div @click="$router.push('/agent')" class="item flex ali_center flex_between">
+            <!-- <div @click="$router.push('/agent')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/daili.png" alt="" />
                     <span>代理中心</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
-            </div>
-            <div @click="$router.push('/receiveSet')" class="item flex ali_center flex_between">
+            </div> -->
+            <!-- <div @click="$router.push('/receiveSet')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/shoufukuan.png" alt="" />
                     <span>收/付款设置</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
-            </div>
+            </div> -->
             <!-- <div class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="" alt="" />
@@ -111,6 +111,13 @@
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div> -->
+            <div @click="$router.push('/cdslist')" class="item flex ali_center flex_between">
+                <div class="left flex ali_center">
+                    <img src="@/assets/images/icon/shoufukuan.png" alt="" />
+                    <span>承兑商</span>
+                </div>
+                <van-icon name="arrow" color="#ccc" />
+            </div> 
             <div @click="$router.push('/feedback')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/fankui.png" alt="" />
