@@ -1,31 +1,37 @@
 <template>
     <div class="pinklist" v-if="list.length">
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        :finished-text="'我是有底线的'"
+        @load="onLoad"
+        >
         <div
           class="pinkitem flex flex_between"
           v-for="(item, index) in list"
           :key="index"
           @click="$router.push('/kqp_detail/' + item.id)"
         >
-          <img class="goodsimg" src="@/assets/images/vip3.png" />
+          <img class="goodsimg" :src="item.thumb" />
           <div class="infos">
-            <div class="store_name line2">名字</div>
+            <div class="store_name line2">{{item.title}}</div>
             <div class="price_member flex flex_between">
               <div class="price flex">
                 <div class="price_1">
-                  ￥<span>100</span>
+                  ￥<span>{{item.groupsprice}}</span>
                 </div>
-                <div class="ot_price">￥100</div>
+                <div class="ot_price">￥{{item.price}}</div>
               </div>
               <div class="pinkmember">
-                <div v-if="item.list.length < 3">
+                <div v-if="item.groupnum < 3">
                   <img
                     class="avatar"
-                    v-for="(itemm, indexx) in item.list"
-                    :src="itemm.avatar"
+                    v-for="(itemm, indexx) in item.groupnum"
+                     src="@/assets/images/icon/1.png"
                     :key="indexx"
                   />
                 </div>
-                <img class="avatar" src="@/assets/images/icon/1.png" />
+                <!-- <img class="avatar" src="@/assets/images/icon/1.png" /> -->
               </div>
             </div>
             <div class="ali_center btns flex flex_between">
@@ -41,42 +47,52 @@
             </div>
           </div>
         </div>
-        <div
-          v-if="list.length == 0"
-          class="nolist"
-          style="width: 100%;line-height: 12vw;text-align: center;color: #999999;font-size: 4vw;"
-        >
-          暂无商品~
-        </div>
+      </van-list>
+      <div
+        v-if="list.length == 0"
+        class="nolist"
+        style="width: 100%;line-height: 12vw;text-align: center;color: #999999;font-size: 4vw;"
+      >
+        暂无商品~
+      </div>
     </div>
 </template>
 <script>
 export default {
     name: "goodsList",
     props: {
-        list: {
-            type: Array,
-            default: () => []
-        }
+        // list: {
+        //     type: Array,
+        //     default: () => []
+        // }
+    },
+    data() {
+      return{
+        page: 1,
+        limit: 10,
+        finished: false,
+        loading: false,
+        list: [],
+      }
     },
     mounted() {
-
+      this.onLoad()
     },
     methods: {
-      async getData(){
-        let res = await $ajax('userrechargelogs', {getType: this.typenum, page: this.page, accountType: 1, status: this.status})  //充值
-            if(!res) return false
-            console.log(res)
-            // this.money = res.money
-           
-            this.page++
-            console.log(res.list)
-            this.list.push(...res.list)
-            // // 加载状态结束
-            this.loading = false
-            if (res.list.length === 0) {
-                this.finished = true //加载完成
-            } 
+      async onLoad(){
+        let res = await $ajax('groupgoods', { page: this.page,})  //活动列表
+        if(!res) return false
+        console.log(res)
+        // this.money = res.money
+        
+        this.page++
+        console.log(res.list)
+        this.list.push(...res.list)
+        // // 加载状态结束
+        this.loading = false
+        if (res.list.length === 0) {
+            this.finished = true //加载完成
+        } 
       }
     }
 }

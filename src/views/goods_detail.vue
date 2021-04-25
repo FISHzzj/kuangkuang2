@@ -6,8 +6,8 @@
         </div>
         <!-- 轮播 -->
         <swiper ref="mySwiper" class="mySwiper" :options="swiperOptions">
-            <swiper-slide v-for="(item, index) in 5" :key="index">
-                <img src="@/assets/images/vip3.png" alt="">
+            <swiper-slide v-for="(item, index) in thumb_url" :key="index">
+                <img :src="item" alt="">
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
@@ -17,26 +17,26 @@
                 <div class="left flex ali_center flex_between">
                     <div class="price flex">
                         <p>拼团价</p>
-                        300.00
-                        <span>300.00</span>
+                        {{groupsprice}}
+                        <span>{{price}}</span>
                     </div>
                     <div class="des">
-                        <p>30人拼团</p>
-                        <p>30人得奖励</p>
+                        <p>11人拼团</p>
+                        <p>8人得奖励</p>
                     </div>
                 </div>
                 <div class="right">第630团</div>
             </div>
             <div class="store_name flex ali_center flex_between">
-                <div class="left line2">这里是名字名字这里是名字名字</div>
+                <div class="left line2">{{title}}</div>
                 <div class="right flex ali_center">
                     <p>奖励</p>
-                    <p>3.00</p>
+                    <p>{{fic}}</p>
                 </div>
             </div>
             <div class="pinklist">
                 <div class="title flex ali_center flex_between">
-                    <div class="left">0人正在拼团,可直接参与</div>
+                    <div class="left">{{groupnum}}人正在拼团,可直接参与</div>
                     <div class="right flex ali_center" @click="chakanlist">
                         <span>查看参团成员</span>
                         <van-icon name="arrow"></van-icon>
@@ -44,23 +44,23 @@
                 </div>
                 <div class="list flex ali_center flex_between">
                     <div class="left flex ali_center">
-                        <img src="@/assets/images/vip2.png" v-for="(item, index) in 5" :key="index" alt="">
+                        <img :src="thumb_url" v-for="(item, index) in groupnum" :key="index" alt="">
                     </div>
                     <div class="right">还差<span>0</span>人成团</div>
                 </div>
             </div>
         </div>
         <div class="goods_info_1" v-else>
-            <div class="store_name">这里是名字</div>
-            <div class="price">￥500.00</div>
-            <div class="price_1">￥300.00</div>
+            <div class="store_name">{{title}}</div>
+            <div class="price">￥{{groupsprice}}</div>
+            <div class="price_1">￥{{price}}</div>
             <div class="num">库存：6000</div>
         </div>
         <div class="content">
             <div class="title">-商品详情-</div>
-            <div v-html="detail"></div>
+            <div v-html="content"></div>
         </div>
-        <div style="height:14vwl;"></div>
+        <div style="height:14vw;"></div>
         <div class="footer flex">
             <div @click="$router.push('/kqp_index')" class="left flex ali_center">
                 <van-icon name="wap-home-o" />
@@ -97,17 +97,46 @@ export default {
                     clickable: true, //允许分页点击跳转
                 },
             },
+            id:"",
+            title:"",
+            category:"",
+            stock:"",
+            price:"",
+            groupsprice:"",
+            groupnum:"",
+            sales:"",
+            content:"",
+            thumb_url:"",
+            fic:"",
+            status:"",
+            rand_num:"",
         };
     },
+    created(){
+        this.id = this.$route.params.id
+        this.getData()
+    },
     methods: {
+        async getData(){
+            let res = await $ajax('groupgoodsdetail', {id: this.id})
+            if(!res) return false
+            // this.money = res.money
+         
+            Object.keys(res).forEach((key) => {
+                this[key] = res[key]
+            })
+        },
         chakanlist(){
             this.$router.push({
-                path: "/pinklist/1"
+                path: "/pinklist/" + this.id
             })
         },
         submit() {
             this.$router.push({
-                path: "/orderSubmit"
+                path: "/ptorderSubmit",
+                query: {
+                    id: this.id
+                }
             })
         }
     }

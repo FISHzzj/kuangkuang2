@@ -60,6 +60,16 @@ export default {
     userlogfil: `${common}do=mobile&r=user.log.fil`, //fil释放记录
     accountverifycode: `${common}do=mobile&r=account.verifycode`, //fil释放记录
 
+    //拼团
+    groupgoods: `${common}do=mobile&r=group.goods`, //活动列表
+    groupgoodsdetail: `${common}do=mobile&r=group.goods.detail`, //拼团活动详情
+    grouporder: `${common}do=mobile&r=group.order`, //立即参团
+    groupgoodsgoodsCheck: `${common}do=mobile&r=group.goods.goodsCheck`, //参团验证
+    grouporderpay: `${common}do=mobile&r=group.order.pay`, //提交结算
+
+    
+
+
     
 
 

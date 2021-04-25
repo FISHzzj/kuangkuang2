@@ -512,6 +512,83 @@ export default {
         }
     },
 
+    //拼团
+    groupgoods(data){
+        if ( mistake(data) ) return false
+        let {list} = data.result
+        return{
+            list
+        }
+    },
+    groupgoodsdetail(data){
+        if ( mistake(data) ) return false
+        let {id, title, category, stock, price, groupsprice, groupnum, sales, content, thumb_url, fic, status, rand_num} = data.result.info
+        return{
+            id,
+            title,
+            category,
+            stock,
+            price,
+            groupsprice,
+            groupnum,
+            sales,
+            content,
+            thumb_url,
+            fic,
+            status,
+            rand_num
+        }
+    },
+    grouporder(data){
+        if ( mistake(data) ) return false
+        let {id, title, groupsprice, thumb, fc} = data.result.info
+        return {
+            id,
+            title,
+            groupsprice,
+            thumb,
+            fc,
+        }
+    },
+    groupgoodsgoodsCheck(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+    grouporderpay(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

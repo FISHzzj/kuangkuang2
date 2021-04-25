@@ -4,36 +4,36 @@
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
             <p>拼团结算</p>
         </div>
-        <div class="addressInfo flex ali_center" @click="addresslist">
+        <!-- <div class="addressInfo flex ali_center" @click="addresslist">
             <van-icon name="location-o" />
             <div class="right" v-if="!address.id">
                 <p class="name_phone">姓名： 145  14500000000</p>
                 <p class="adddetail">北京市</p>
             </div>
             <div class="right" v-else>添加收货地址</div>
-        </div>
+        </div> -->
         <div class="goodsInfo">
             <div class="title">商品信息</div>
             <div class="list">
                 <div class="item flex ali_center">
-                    <img src="@/assets/images/vip2.png" class="proimg" alt="">
+                    <img :src="thumb" class="proimg" alt="">
                     <div class="right">
-                        <p class="name">这里是名字这里是名字这里是名字</p>
+                        <p class="name">{{title}}</p>
                         <p class="price_num">
-                            <span class="price">￥300.00</span>
+                            <span class="price">{{groupsprice}}FC</span>
                             <span class="num">X1</span>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="bottom">共1件商品 共计<span>￥200.00</span></div>
+            <div class="bottom">共1件商品 共计<span>{{groupsprice}}FC</span></div>
         </div>
         <div class="payways">
             <div class="title">支付方式</div>
             <div class="item flex ali_center flex_between" @click="change('PPVB')">
                 <div class="left flex ali_center">
                     <van-icon name="gold-coin-o" />
-                    <span>PPVB(￥0)</span>
+                    <span>FC({{fc || 0}})</span>
                 </div>
                 <div class="right">
                     <van-icon color="#fc4142" v-if="payType == 'PPVB'" name="checked" />
@@ -43,24 +43,40 @@
         </div>
         <div style="height:12vw;"></div>
         <div class="footer flex flex_between ali_center">
-            <div class="left">合计￥200.00</div>
+            <div class="left">合计{{groupsprice}}FC</div>
             <div class="right" @click="submittotal">提交结算</div>
         </div>
     </div>
 </template>
 <script>
-import { Toast } from 'vant';
+// import { Toast } from 'vant';
 export default {
     name: "orderSubmit",
     data() {
         return {
             payType: 'PPVB',
-            address: {}
+            address: {},
+            idP:"",
+            title:"",
+            groupsprice:"",
+            thumb:"",
+            fc:"",
         };
     },
     mounted() {
+        this.id = this.$route.query.id
+        this.getData()
     },
     methods:{
+        async getData(){
+            let res = await $ajax('grouporder', {id: this.id})
+            if(!res) return false
+            // this.money = res.money
+         
+            Object.keys(res).forEach((key) => {
+                this[key] = res[key]
+            })
+        },
         addresslist(){
             this.$router.push('/addressList')
         },
@@ -71,8 +87,16 @@ export default {
            Dialog.confirm({
                 // title: '标题',
                 message: '是否确认提交结算并支付',
-            }).then(() => {
-            // on close
+            }).then(async () => {
+                let res = await $ajax('groupgoodsgoodsCheck', {id: this.id})
+                if(!res) return false 
+                // Toast(res)
+
+            }).then(async ()=>{
+                let res = await $ajax('grouporderpay', {id: this.id})
+                if(!res) return false 
+                Toast(res)
+                this.$router.go(-1)
             }).catch(() => {
                 // on cancel
             });

@@ -25,7 +25,7 @@
                     <van-icon name="arrow"></van-icon>
                 </div>
             </div>
-            <goodslist :list="list"></goodslist>
+            <goodslist></goodslist>
         </div>
         <!-- <div class="list">
             <div class="title flex ali_center flex_between">
@@ -81,15 +81,16 @@ export default {
                     clickable: true, //允许分页点击跳转
                 },
             },
-            list: [
-                {id: 1, list:[]},
-                {id: 1, list:[]},
-                {id: 1, list:[]},
-                {id: 1, list:[]},
-                {id: 1, list:[]}
-            ]
+            // list: []
         };
-    }
+    },
+    mounted(){
+        // this.onLoad()
+    },
+    methods:{
+       
+    },
+    
 };
 </script>
 <style lang="less" scoped>

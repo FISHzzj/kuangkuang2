@@ -50,7 +50,7 @@ export default [
         }
     },
     {
-        path: '/ptorderSubmit', // 查看参团成员
+        path: '/ptorderSubmit', // 生成订单
         name: 'ptorderSubmit',
         component: () => import("@/views/ptorderSubmit.vue"),
         props: false,//1111,
