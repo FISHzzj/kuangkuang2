@@ -66,6 +66,9 @@ export default {
     grouporder: `${common}do=mobile&r=group.order`, //立即参团
     groupgoodsgoodsCheck: `${common}do=mobile&r=group.goods.goodsCheck`, //参团验证
     grouporderpay: `${common}do=mobile&r=group.order.pay`, //提交结算
+    groupteamlog: `${common}do=mobile&r=group.team.log`, //成团信息
+    groupteam: `${common}do=mobile&r=group.team`, //拼团订单
+    groupteamdetail: `${common}do=mobile&r=group.team.detail`, //订单详情
 
     
 

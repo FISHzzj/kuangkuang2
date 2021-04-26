@@ -99,4 +99,24 @@ export default [
             mustLogin: true,//
         }
     },
+    {
+        path: '/pinorder', // 拼团订单
+        name: 'pinorder',
+        component: () => import("@/views/pinorder.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
+    {
+        path: '/porderdetail', // 拼团订单详情
+        name: 'porderdetail',
+        component: () => import("@/views/porderdetail.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
 ]

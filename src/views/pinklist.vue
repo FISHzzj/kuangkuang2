@@ -5,16 +5,23 @@
             <p>查看参团成员</p>
         </div>
         <div class="list">
-            <div class="item flex flex_between ali_center">
-                <div class="left flex ali_center">
-                    <img src="@/assets/images/vip2.png" alt="">
-                    <div>
-                        <p class="nickname">这是昵称</p>
-                        <p class="num">参团编号:P001</p>
+            <van-list
+                v-model="loading"
+                :finished="finished"
+                :finished-text="'我是有底线的'"
+                @load="onLoad"
+                >
+                <div class="item flex flex_between ali_center"  v-for="(item, index) in list" :key="index">
+                    <div class="left flex ali_center">
+                        <img :src="item.avatar" alt="">
+                        <div>
+                            <p class="nickname">{{item.nickname}}</p>
+                            <p class="num">参团编号:{{item.id}}</p>
+                        </div>
                     </div>
+                    <div class="right">{{item.createtime}}</div>
                 </div>
-                <div class="right">2020-20-20</div>
-            </div>
+            </van-list>
         </div>
     </div>
 </template>
@@ -23,11 +30,33 @@ export default {
     name: "pinklist",
     data() {
         return {
+            page: 1,
+            limit: 10,
+            finished: false,
+            loading: false,
+            list: [],
+      
         };
     },
     mounted() {
+        this.teamid = this.$route.params.id
     },
     methods:{
+        async onLoad(){
+            let res = await $ajax('groupteamlog', {teamid: this.teamid})  //活动列表
+            if(!res) return false
+            console.log(res)
+            // this.money = res.money
+            
+            this.page++
+            console.log(res.list)
+            this.list.push(...res.list)
+            // // 加载状态结束
+            this.loading = false
+            // if (res.list.length === 0) {
+                this.finished = true //加载完成
+            // } 
+        }
     }
 };
 </script>

@@ -22,7 +22,7 @@
                     </div>
                     <div class="des">
                         <p>11人拼团</p>
-                        <p>8人得奖励</p>
+                        <p>{{rand_num}}人得奖励</p>
                     </div>
                 </div>
                 <div class="right">第630团</div>
@@ -36,7 +36,7 @@
             </div>
             <div class="pinklist">
                 <div class="title flex ali_center flex_between">
-                    <div class="left">{{groupnum}}人正在拼团,可直接参与</div>
+                    <div class="left">{{total}}人正在拼团,可直接参与</div>
                     <div class="right flex ali_center" @click="chakanlist">
                         <span>查看参团成员</span>
                         <van-icon name="arrow"></van-icon>
@@ -44,9 +44,9 @@
                 </div>
                 <div class="list flex ali_center flex_between">
                     <div class="left flex ali_center">
-                        <img :src="thumb_url" v-for="(item, index) in groupnum" :key="index" alt="">
+                        <img :src="item.avatar" v-for="(item, index) in team" :key="index" alt="">
                     </div>
-                    <div class="right">还差<span>0</span>人成团</div>
+                    <div class="right">还差<span>{{notNum}}</span>人成团</div>
                 </div>
             </div>
         </div>
@@ -110,6 +110,11 @@ export default {
             fic:"",
             status:"",
             rand_num:"",
+            team:"",
+            teamid: "",
+            notNum: "",
+            total: "",
+        
         };
     },
     created(){
@@ -128,7 +133,7 @@ export default {
         },
         chakanlist(){
             this.$router.push({
-                path: "/pinklist/" + this.id
+                path: "/pinklist/" + this.teamid
             })
         },
         submit() {
@@ -220,6 +225,7 @@ export default {
         }
         .store_name {
             padding: 1.5vw 2.4vw;
+            border-bottom: 5px solid #e4e1e1;
             .left {
                 width: 80vw;
                 font-size: 3.73vw;
@@ -239,8 +245,9 @@ export default {
             background-color: #fff;
             padding: 0 3vw;
             margin: 2.4vw 0;
+            border-bottom: 5px solid #e4e1e1;
             .title {
-                border-bottom: 1px solid #f7f7f7;
+                border-bottom: 1px solid #d8d0d0;
                 height: 12vw;
                 color: #999;
                 font-size: 3.2vw;
@@ -294,8 +301,9 @@ export default {
             height: 12vw;
             color: #999;
             font-size: 4.5vw;
-            line-height: 12vw;
+            line-height: 9vw;
             text-align: center;
+            border-bottom: 5px solid #e4e1e1;
         }
     }
     .footer {

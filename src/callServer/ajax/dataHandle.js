@@ -523,6 +523,7 @@ export default {
     groupgoodsdetail(data){
         if ( mistake(data) ) return false
         let {id, title, category, stock, price, groupsprice, groupnum, sales, content, thumb_url, fic, status, rand_num} = data.result.info
+        let {team, teamid, notNum, total} = data.result.team
         return{
             id,
             title,
@@ -536,12 +537,17 @@ export default {
             thumb_url,
             fic,
             status,
-            rand_num
+            rand_num,
+            team,
+            teamid,
+            notNum,
+            total,
         }
     },
     grouporder(data){
         if ( mistake(data) ) return false
-        let {id, title, groupsprice, thumb, fc} = data.result.info
+        let {id, title, groupsprice, thumb} = data.result.info
+        let fc = data.result.fc
         return {
             id,
             title,
@@ -562,6 +568,30 @@ export default {
         let {message} = data.result
         return {
             msg: message
+        }
+    },
+    groupteamlog(data){
+        if ( mistake(data) ) return false
+        let {team} = data.result
+        return{
+            list: team
+        }
+    },
+    groupteam(data){
+        if ( mistake(data) ) return false
+        let {list} = data.result
+        return{
+            list
+        }
+    },
+    groupteamdetail(data){
+        if ( mistake(data) ) return false
+        let {id, price, title, thumb} = data.result.item
+        return{
+            id, 
+            price, 
+            title, 
+            thumb
         }
     },
 

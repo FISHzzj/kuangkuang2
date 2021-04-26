@@ -11,7 +11,6 @@
             :search-result="searchResult"
             :area-columns-placeholder="['请选择', '请选择', '请选择']"
             @save="onSave"
-           
             @change-detail="onChangeDetail"
         />
     </div>

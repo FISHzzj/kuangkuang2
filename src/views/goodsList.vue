@@ -23,11 +23,11 @@
                 <div class="ot_price">￥{{item.price}}</div>
               </div>
               <div class="pinkmember">
-                <div v-if="item.groupnum < 3">
+                <div>
                   <img
                     class="avatar"
-                    v-for="(itemm, indexx) in item.groupnum"
-                     src="@/assets/images/icon/1.png"
+                    v-for="(itemm, indexx) in item.teamUser"
+                    :src="itemm.avatar"
                     :key="indexx"
                   />
                 </div>
@@ -37,10 +37,10 @@
             <div class="ali_center btns flex flex_between">
                 <div class="left">
                     <div class="a">
-                    1人拼团
+                    11人拼团
                     </div>
                     <div class="b">
-                    1人奖励1PPVB
+                    8人奖励1%FC
                     </div>
                 </div>
                 <van-icon name="arrow" color="#fc4142"></van-icon>   
@@ -144,11 +144,13 @@ export default {
                     width: 13.61vw;
                     height: 5.07vw;
                     .avatar {
-                        position: absolute;
+                        // position: absolute;
                         width: 5.07vw;
                         height: 5.07vw;
                         border-radius: 50%;
+                        margin-left: -3vw;
                     }
+                    
                 }
             }
         }

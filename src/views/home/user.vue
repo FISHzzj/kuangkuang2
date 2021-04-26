@@ -111,6 +111,13 @@
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div> -->
+            <div @click="$router.push('/pinorder')" class="item flex ali_center flex_between" >
+                <div class="left flex ali_center">
+                    <img src="@/assets/images/icon/daili.png" alt="" />
+                    <span>拼团订单</span>
+                </div>
+                <van-icon name="arrow" color="#ccc" />
+            </div>
             <div @click="$router.push('/cdslist')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/shoufukuan.png" alt="" />
