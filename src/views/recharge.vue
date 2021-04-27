@@ -15,7 +15,7 @@
         </div>
         <div class="money">
             <div class="type">FC拼单积分</div>
-            <div class="num">100</div>
+            <div class="num">{{money}}</div>
         </div>
         <div class="buy_num">
             <div class="title">充值FC拼单积分</div>
@@ -23,7 +23,7 @@
                 <input type="number" v-model="num" placeholder="请输入FC拼单积分，限整数" style="width: 75%;"/>
                 <span>FC</span>
             </div>
-            <div class="title">提示：整50倍数充值</div>
+            <!-- <div class="title">提示：整50倍数充值</div> -->
             <!-- <div class="tips flex ali_center flex_between">
                 <span>CNY实时单价≈1元/CNY</span>
                 <span v-if="num">实付{{paynum}}元</span>
@@ -59,6 +59,7 @@
     </div>
 </template>
 <script>
+import { Toast } from 'vant';
 export default {
     name: "recharge",
     data() {
@@ -83,8 +84,9 @@ export default {
             let res = await $ajax('userrechargedontPay', {lid: 4}) 
         },
         async getData() {
-            let res = await $ajax('userrecharge', {rechargeType: "cny", getType: "1"})  //充值
+            let res = await $ajax('userrecharge', {rechargeType: "fc", getType: "1"})  //充值
             if(!res) return false
+            console.log(res)
             this.money = res.money
         },
         gopage(url) {
@@ -98,17 +100,19 @@ export default {
             let num = this.num
             // let paynum = this.paynum
             if(!num) return Toast('请输入您的充值数量，限整数!')
-            let res = await $ajax('userrechargelogCheck', {})  //充值
+            let res = await $ajax('userrechargesetFC', {money: num})  //充值
             if(!res) return false
             console.log(res)
-            this.$router.push({
-                name: "huiMoney",
-                query: {
-                    // money: paynum,
-                    num : num,
-                    money : this.paynum
-                }
-            })
+            Toast(res.msg)
+            this.num = ''
+            // this.$router.push({
+            //     name: "huiMoney",
+            //     query: {
+            //         // money: paynum,
+            //         num : num,
+            //         money : this.paynum
+            //     }
+            // })
         }
     }
 };

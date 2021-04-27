@@ -14,10 +14,10 @@
            
 
             <div class="name">{{typetype}}{{type}}</div>
-            <div class="change flex ali_center" @click="show = true">
+            <!-- <div class="change flex ali_center" @click="show = true">
                 <span>{{typetype}}</span>
                 <van-icon name="arrow"></van-icon>
-            </div>
+            </div> -->
             <!-- <div v-if="type == 'USDT'" class="types flex ali_center">
                 <span>链类型：</span>
                 <div class="on" @click="changenav('ERC')">ERC20</div>
@@ -44,19 +44,19 @@
                 <input v-model="address" type="text" placeholder="输入转账地址" />
             </div> -->
             <div class="img flex flex_between ali_center">
-                <div class="title">完成转账截图</div>
-                <van-uploader :after-read="afterRead" v-if="!baseimg" />
+                <div class="title">钱包收款码</div>
+                <!-- <van-uploader :after-read="afterRead" v-if="!baseimg" /> -->
                 <img :src="baseimg" alt="" v-if="baseimg" >
             </div>
             
         </div>
         <div class="tips">
             <p>温馨提示：</p>
-            <div>1.最小输入数量为0.007</div>
+            <!-- <div>1.最小输入数量为0.007</div>
             <div>2.请务必保证提币钱包地址的准确性，否则资产将无法找回；</div>
             <div>3.旷工费具体多少由市场决定，平台不收取手续费</div>
-            <div>4.提币审核会在24小时内完成，具体到账时间会受网络影响，可能有所延迟；</div>
-            <div>5.如长时间未到账，请及时联系客服</div>
+            <div>4.提币审核会在24小时内完成，具体到账时间会受网络影响，可能有所延迟；</div> -->
+            <div>1.如长时间未到账，请及时联系客服</div>
         </div>
         <div class="submit" :class="{on: num}" @click="submit">确认{{typetype}}</div>
         <van-action-sheet
@@ -124,12 +124,13 @@ export default {
             }else if(type == "fil"){
                 this.accountType = 5
             }
-            let res = await $ajax('userrecharge', {rechargeType: type, getType: 2, accountType: this.accountType})
+            let res = await $ajax('userrecharge', {rechargeType: type, getType: 2})
             if(!res) return false
             this.money = res.money
             this.code = res.code
             this.wallet = res.wallet
             this.payId = res.id
+            this.baseimg = res.image
         },
         async afterRead(s) {
             console.log(s);
@@ -168,13 +169,13 @@ export default {
             }else if(type == "fil"){
                 this.accountType = 5
             }
-            let res = await $ajax('userrechargepays', {
-                getType: 2,
+            let res = await $ajax('userrechargesetFIL', {
+                // getType: 2,
                 payId: this.payId,
                 money: this.num,
-                wallet: this.wallet,
+                // wallet: this.wallet,
                 // carType: this.carType,
-                accountType: this.accountType
+                // accountType: this.accountType
         
             })
             if(!res) return false

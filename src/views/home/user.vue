@@ -79,7 +79,7 @@
             <div class="right flex ali_center" >
                 <div class="cash" @click="$router.push('/cash')">提现</div>
                 <p></p>
-                <div class="recharge" @click="$router.push('/recharge/CNY')">充值</div>
+                <div class="recharge" @click="$router.push('/recharge/FC')">充值</div>
             </div>
         </div>
         <div class="list">
@@ -97,13 +97,13 @@
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div> -->
-            <!-- <div @click="$router.push('/receiveSet')" class="item flex ali_center flex_between">
+            <div @click="$router.push('/receiveSet')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/shoufukuan.png" alt="" />
                     <span>收/付款设置</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
-            </div> -->
+            </div>
             <!-- <div class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="" alt="" />
@@ -187,8 +187,12 @@ export default {
         this.getlist()
     },
     methods: {
-        minihandle(){
-            Toast('签到成功')
+        async minihandle(){
+             let res = await $ajax('sign', {
+                type: "sign"
+            })
+            if(!res) return false
+            Toast(res)
         },
         closeservice(e) {
             this.showService = false;

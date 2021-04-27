@@ -43,6 +43,14 @@
                 </div>
                 <input class="address" type="text" :placeholder="'请输入' + type + '钱包地址'" v-model="address" />
             </div>
+            <div class="code" v-if="type == 'FIL'">
+                <div class="left" v-if="type == 'FIL'"><span>*</span>收款码</div>
+                <!-- <div class="left" v-if="type == 'ali'"><span>*</span>支付宝收款吗</div> -->
+                <div class="img flex">
+                    <van-uploader preview-size="192" :after-read="afterRead"  v-if="!baseimg"></van-uploader>
+                    <img :src="baseimg" alt="" v-if="baseimg" >
+                </div>
+            </div>
             <van-field
                 v-model="sms"
                 center
@@ -56,13 +64,13 @@
                     <van-button size="small" @click="senVerifyCode()">{{timeAndTextOfSendcode}}</van-button>
                 </template>
             </van-field>
-            <div class="code" v-if="type == 'weixin' || type == 'ali'">
+            <!-- <div class="code" v-if="type == 'weixin' || type == 'ali'">
                 <div class="left" v-if="type == 'weixin'"><span>*</span>微信收款吗</div>
                 <div class="left" v-if="type == 'ali'"><span>*</span>支付宝收款吗</div>
                 <div class="img flex">
                     <van-uploader preview-size="192" after-read="afterread"></van-uploader>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="tips">
             <div class="title">温馨提示：</div>
@@ -91,6 +99,7 @@ export default {
             type: "",
             typeName: "",
             mobile: "",
+            baseimg: "",
         };
     },
     created() {
@@ -116,6 +125,15 @@ export default {
         }
     },
     methods: {
+        async afterRead(s) {
+            console.log(s);
+            let img = s.content
+            let res = await $ajax('userrechargeimages', {image: img})
+            if(!res) return false
+            console.log(res)
+            this.baseimg = res.img
+
+        },
         timing () {
             this.timer = setInterval( () => {
                 this.timeAndTextOfSendcode--
@@ -177,8 +195,9 @@ export default {
                 let res = await $ajax('userpayment', {
                     wallet:this.address,
                     paymentType: paymentType,
-                    usdtType: this.status,
-                    code: this.sms
+                    // usdtType: this.status,
+                    code: this.sms,
+                    image: this.baseimg
                 })
                 if (!res) return false
                 Toast(res.msg)
@@ -187,9 +206,7 @@ export default {
             
             
         },
-        afterRead(res) {
-
-        },
+        
         change(index) {
             this.status = index;
         }
@@ -301,6 +318,13 @@ export default {
                 border: 1px solid #eee;
                 border-radius: 2vw;
                 margin: 0 auto;
+                // .img{
+                position: relative;
+                img{
+                    width: 192px;
+                    height: 192px;
+                }
+        // }
             }
         }
         .content {
