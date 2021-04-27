@@ -49,7 +49,7 @@ export default {
     userfeedbacklook: `${common}do=mobile&r=user.feedback.look`, //关于我们
     userfeedback: `${common}do=mobile&r=user.feedback`, //意见反馈
     kuangnoticeText: `${common}do=mobile&r=kuang.noticeText`, //公告内容
-    usercurrenhulv: `${common}do=mobile&r=user.curren.hulv`, //汇率数据
+    // usercurrenhulv: `${common}do=mobile&r=user.curren.hulv`, //汇率数据
     kuangorderdontPay: `${common}do=mobile&r=kuang.order.dontPay`, //取消订单
     kuangorderfeesOrder: `${common}do=mobile&r=kuang.order.feesOrder`, //续交电费展示
     kuangordercontiendLog: `${common}do=mobile&r=kuang.order.contiendLog`, //缴费记录
@@ -69,7 +69,25 @@ export default {
     groupteamlog: `${common}do=mobile&r=group.team.log`, //成团信息
     groupteam: `${common}do=mobile&r=group.team`, //拼团订单
     groupteamdetail: `${common}do=mobile&r=group.team.detail`, //订单详情
+    sign: `${common}do=mobile&r=sign`, //签到
+    userrechargesetFC: `${common}do=mobile&r=user.recharge.setFC`, //FC充值
+    userrecharge: `${common}do=mobile&r=user.recharge`, //充值/提现渲染
+    userrechargerefreshFC: `${common}do=mobile&r=user.recharge.refreshFC`, //刷新承兑商
+    userrechargesetUsdt: `${common}do=mobile&r=user.recharge.setUsdt`, //usdt充值
+    userrechargeinfo: `${common}do=mobile&r=user.recharge.info`, //usdt/记录详情
+    userrechargesetFIL: `${common}do=mobile&r=user.recharge.setFIL`, //fil提现
+    // userrechargedontPay: `${common}do=mobile&r=user.recharge.dontPay`, //取消订单
 
+    
+    
+
+    
+
+    
+
+    
+
+    
     
 
 

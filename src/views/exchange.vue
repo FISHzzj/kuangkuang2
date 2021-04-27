@@ -43,7 +43,7 @@
         </div>
         <div class="tips">
             <p>温馨提示：</p>
-            <div>转账钱请无比确认地址接比重信息无误，已经转出则不可撤销，USDT充值链名称为ERC20，请仔细核对。</div>
+            <div>转账钱请无比确认地址接比重信息无误，已经转出则不可撤销,请仔细核对。</div>
         </div>
         <div class="submit" :class="{on: num}" @click="submit">确认{{typetype}}</div>
         <van-action-sheet
@@ -129,26 +129,26 @@ export default {
         },
         async submit() {
             if(!this.num) return Toast("请输入数量!")
-            if(!this.baseimg) return Toast("请上传转账截图!")
-            let type = this.type.toLowerCase()
-            if(type == "cny"){
-                this.accountType = 1
-            }else if(type == "usdt") {
-                this.accountType = 2
-            }else if(type == "btc"){
-                this.accountType = 3
-            }else if(type == "eth"){
-                this.accountType = 4
-            }else if(type == "fil"){
-                this.accountType = 5
-            }
-            let res = await $ajax('userrechargepays', {
-                getType: 1,
+            // if(!this.baseimg) return Toast("请上传转账截图!")
+            // let type = this.type.toLowerCase()
+            // if(type == "cny"){
+            //     this.accountType = 1
+            // }else if(type == "usdt") {
+            //     this.accountType = 2
+            // }else if(type == "btc"){
+            //     this.accountType = 3
+            // }else if(type == "eth"){
+            //     this.accountType = 4
+            // }else if(type == "fil"){
+            //     this.accountType = 5
+            // }
+            let res = await $ajax('userrechargesetUsdt', {
+                // getType: 1,
                 image: this.baseimg,
                 money: this.num,
                 // realname: this.zhuanname,
-                accountType: this.accountType,
-                lid: this.id,
+                // accountType: this.accountType,
+                // lid: this.id,
             })
             if(!res) return false
             console.log(res)

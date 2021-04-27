@@ -4,11 +4,11 @@
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
             <p>{{title}}</p>
         </div>
-        <div class="nav flex ali_center">
+        <!-- <div class="nav flex ali_center">
             <div class="item" @click="changenav(index)" :class="{on:index == status}" v-for="(item, index) in navlist" :key="index">
                 {{item}}
             </div>
-        </div>
+        </div> -->
         <div class="list" >
             <van-list
                 v-model="loading"
@@ -17,28 +17,29 @@
                 @load="logs"
                 >
                 <div
-                class="item" 
-               
-                v-for="(item,index) in 5" :key="index" >
+                    class="item" 
+                    v-for="(item,index) in list" :key="index" >
                     <div class="top flex ali_center flex_between">
-                        <div class="time">2020-04-22</div>
-                        <div class="status">交易中</div>
+                        <div class="time">{{item.createtime}}</div>
+                        <div><van-icon @click="replay(item.id)" name="replay" size="20" /></div>
+                        <div class="status">{{item.statusText}}</div>
                     </div>
                     <div class="bottom flex ali_center">
                         <div class="left">
-                            <div class="type">FC拼单积分</div>
-                            <div class="num">+200</div>
+                            <div class="type">{{item.rechargeText}}</div>
+                            <div class="num">+{{item.money}}</div>
                         </div>
                         <div class="right">
                             <div class="flex item1 flex_between ali_center">
                                 <span>代理ID</span>
-                                <p>3208897</p>
+                                <p>{{item.acce_id}}</p>
                             </div>
                             <div class="flex flex_between ali_center">
                                 <span>承兑商</span>
-                                <p>19170866386</p>
+                                <p>{{item.acce_mobile}}</p>
                             </div>
                         </div>
+                        
                     </div>
                 </div >
               
@@ -68,7 +69,7 @@ export default {
         this.type = this.$route.params.type;
         if (this.type =='recharge') {
             this.title = "充值记录"
-            this.typenum = 1
+            this.typenum = 1 // fc
             // this.logs()
         } else if (this.type == "cash") {
             this.title = "提现记录"
@@ -104,7 +105,7 @@ export default {
         },
         async logs() {
    
-            let res = await $ajax('userrechargelogs', {getType: this.typenum, page: this.page, accountType: 1, status: this.status})  //充值
+            let res = await $ajax('userrechargelogs', {getType: this.typenum, page: this.page, accountType: '1'})  //充值
             if(!res) return false
             console.log(res)
             // this.money = res.money
@@ -117,6 +118,26 @@ export default {
             if (res.list.length === 0) {
                 this.finished = true //加载完成
             } 
+        },
+        async replay(id){
+            
+            let res = await $ajax('userrechargerefreshFC', {id: id})  //充值
+            if(!res) return false
+            console.log(res)
+            let acce_id = res.id
+            let mobile = res.mobile
+            var lists = []
+            this.list.forEach((item, index)=>{
+                if(item.id == id){
+                    item.acce_mobile = mobile
+                    item.acce_id = acce_id
+             
+                }
+                lists.push(item)
+            }) 
+            console.log(lists)
+            this.list = lists
+
         },
         gonext(id, text){
             //  :to="{name:'recordDetail', query: {id: item.id}}"
@@ -212,7 +233,7 @@ export default {
                 .left {
                     width: 60%;
                     .type {
-                        font-size: 3.2vw;
+                        font-size: 4.2vw;
                     }
                     .num {
                         font-size: 6vw;

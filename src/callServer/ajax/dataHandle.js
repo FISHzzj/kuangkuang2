@@ -16,10 +16,10 @@ function mistake (data) {
         Dialog.alert({
             message: data.result.message
         })
-        if(data.result.message == '请先登录'){
-            localStorage.removeItem('openid')
-            localStorage.removeItem('mobile')
-        }
+        // if(data.result.message == '请先登录'){
+        //     localStorage.removeItem('openid')
+        //     localStorage.removeItem('mobile')
+        // }
         return true //發生錯誤
     }
     return false //未發生錯誤
@@ -105,17 +105,16 @@ export default {
     },
     userInfowallet(data){
         if ( mistake(data) ) return false
-        let {usdt, cny, btc, eth, fil, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
+        let {fc, fic, fil, loyalty, mobile, sysmoney, usdt, huilv} = data.result.wallet
         return {
+            fc, 
+            fic, 
+            fil, 
+            loyalty, 
+            mobile, 
+            sysmoney, 
             usdt,
-            cny,
-            btc,
-            eth,
-            fil,
-            sysmoney,
-            huilv,
-            fil_frozen,
-            fil_sys,
+            huilv
         }
     },
     applylevel(data) {
@@ -250,7 +249,8 @@ export default {
             money: info.money,
             wallet: info.wallet,
             code: info.code,
-            id: info.id
+            id: info.id,
+            image: info.image
         }
     },
     rechargegetCre(data) {
@@ -594,8 +594,54 @@ export default {
             thumb
         }
     },
-
-
+    sign(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+    userrechargesetFC(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+    userrechargerefreshFC(data){
+        if ( mistake(data) ) return false
+        let {id, mobile} = data.result
+        return {
+            id,
+            mobile
+        }
+    },
+    userrechargesetUsdt(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+    userrechargeinfo(data) {
+        if ( mistake(data) ) return false
+        let {accountType, money, ordersn, createtime, status, statusText} = data.result.info
+        return{
+            accountType, 
+            money, 
+            ordersn, 
+            createtime, 
+            status,
+            statusText
+        }
+    },
+    userrechargesetFIL(data) {
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
 
 
 

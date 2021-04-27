@@ -19,20 +19,20 @@
                     <div class="type">{{type}}总资产</div>
                     <div class="num">{{fil_sys}}</div>
                 </div>
-                <div class="right" v-if="type == 'FIL'" @click="suocanglist">
+                <!-- <div class="right" v-if="type == 'FIL'" @click="suocanglist">
                     <div class="type">{{type}}锁仓资金</div>
                     <div class="num">{{fil_frozen}}</div>
-                </div>
+                </div> -->
             </div>
             <div class="bottom flex flex_between ali_center">
                 <div class="left">
                     <div class="type">可用</div>
                     <div class="num">{{money}}</div>
                 </div>
-                <div class="right" v-if="type != 'CNY'">
+                <!-- <div class="right" v-if="type != 'CNY'">
                     <div class="type">折合(CNY)</div>
                     <div class="num">{{tocny}}</div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="list">
@@ -58,12 +58,12 @@
             
         </div>
         <div class="footer flex ali_center flex_between">
-            <div v-if="type != 'USDT' && type != 'CNY'" class="exchange flex ali_center"  @click="duihuan">
+            <div v-if="type == 'USDT' || type == 'FIL' " class="exchange flex ali_center"  @click="duihuan">
                 <van-icon name="exchange" color="blue" />
                 <span>兑换</span>
             </div>
-            <div class="cash" :class="{on:type == 'USDT' || type == 'CNY'}" @click="$router.push('/cash')">提现</div>
-            <div class="recharge" :class="{on:type == 'USDT' || type == 'CNY'}" @click="gorecharge">充值</div>
+            <div class="cash" :class="{on:type == 'FIL'}" v-if="type == 'FIL'" @click="$router.push('/cash')">提现</div>
+            <div class="recharge" :class="{on:type == 'USDT' || type == 'FC'}" v-if="type == 'USDT' || type == 'FC'" @click="gorecharge">充值</div>
         </div>
     </div>
 </template>
@@ -170,10 +170,10 @@ export default {
             this.$router.push('/changeType/' + this.type + '/' + this.money)
         },
         gorecharge() {
-            if (this.type == 'CNY') {
+            if (this.type == 'FC') {
                 this.$router.push('/recharge/' + this.type);
             } else {
-                this.$router.push('/recharge/' + this.type);
+                this.$router.push('/exchange/' + this.type + '/转入');
             }
         },
     }

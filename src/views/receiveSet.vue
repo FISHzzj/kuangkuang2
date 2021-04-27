@@ -6,11 +6,18 @@
             <van-icon name="plus" @click="showList = true" color="blue" />
         </div>
         <div style="height:15vw"></div>
-        <div class="list" v-for="item in list" :key="item.id">
-            <div class="item" @click="goedit(item.paytext, item.id)" >
+        <div class="list" >
+            <div class="item" @click="goedit(item.paytext, item.id)" v-for="item in list" :key="item.id" >
+                <div class="wrapper flex" v-if="item.paytext == 'FIL'" :style="{'background-image': 'url('+filimg+')'}">
+                    <div class="left"></div>
+                    <div class="right">
+                        <div class="name">{{item.wallet}}</div>
+                        <div class="num">{{item.text}}</div>
+                    </div>
+                </div>
                 <!-- 每个类型背景图不同 -->
                 <!-- <img src="" alt=""> -->
-                <div class="wrapper flex" v-if="item.paytext == '银行卡'" :style="{'background-image': 'url('+bankimg+')'}" >
+                <!-- <div class="wrapper flex" v-if="item.paytext == '银行卡'" :style="{'background-image': 'url('+bankimg+')'}" >
                     <div class="left"></div>
                     <div class="right">
                         <div class="name">{{item.realname}}</div>
@@ -19,16 +26,16 @@
                         <div class="num">{{item.openbranch}}</div>
                         
                     </div>
-                </div>
-                <div class="wrapper flex" v-if="item.paytext == 'USDT'" :style="{'background-image': 'url('+usdtimg+')'}">
+                </div> -->
+                <!-- <div class="wrapper flex" v-if="item.paytext == 'USDT'" :style="{'background-image': 'url('+usdtimg+')'}">
                     <div class="left"></div>
                     <div class="right">
                         <div class="name">{{item.wallet}}</div>
                         <div class="num">{{item.usdttext}}</div>
                         <div class="num">{{item.text}}</div>
                     </div>
-                </div>
-                <div class="wrapper flex" v-if="item.paytext == 'BTC'" :style="{'background-image': 'url('+btcimg+')'}">
+                </div> -->
+                <!-- <div class="wrapper flex" v-if="item.paytext == 'BTC'" :style="{'background-image': 'url('+btcimg+')'}">
                     <div class="left"></div>
                     <div class="right">
                         <div class="name">{{item.wallet}}</div>
@@ -41,14 +48,8 @@
                         <div class="name">{{item.wallet}}</div>
                         <div class="num">{{item.text}}</div>
                     </div>
-                </div>
-                <div class="wrapper flex" v-if="item.paytext == 'FIL'" :style="{'background-image': 'url('+filimg+')'}">
-                    <div class="left"></div>
-                    <div class="right">
-                        <div class="name">{{item.wallet}}</div>
-                        <div class="num">{{item.text}}</div>
-                    </div>
-                </div>
+                </div> -->
+                
             </div>
         </div>
         <div class="mask" v-if="showList" @click="showList = false"></div>
@@ -57,12 +58,12 @@
                 <span>添加收款方式</span>
                 <van-icon name="cross" @click="showList = false"></van-icon>
             </div>
-            <div class="item" @click="goedit('bank')">银行卡</div>
+            <!-- <div class="item" @click="goedit('bank')">银行卡</div> -->
             <!-- <div class="item" @click="goedit('weixin')">微信</div> -->
             <!-- <div class="item" @click="goedit('ali')">支付宝</div> -->
-            <div class="item" @click="goedit('USDT')">USDT地址</div>
+            <!-- <div class="item" @click="goedit('USDT')">USDT地址</div>
             <div class="item" @click="goedit('BTC')">BTC地址</div>
-            <div class="item" @click="goedit('ETH')">ETH地址</div>
+            <div class="item" @click="goedit('ETH')">ETH地址</div> -->
             <div class="item" @click="goedit('FIL')">FIL地址</div>
         </div>
     </div>

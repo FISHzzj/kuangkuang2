@@ -19,7 +19,7 @@
                     <div class="type">换取币</div>
                     <div class="name flex ali_center">
                         <img src="@/assets/images/icon/5.png" alt="">
-                        <span>USDT</span>
+                        <span>{{huantype}}</span>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="title">温馨提示：</div>
             <div class="grey">1.受汇率影响货币价格是是波动，请以最终兑换成功数量为准;</div>
             <div class="grey">1.请确认兑换货币币种，一经兑换成功不可撤回;</div>
-            <div class="grey">1.ETH最低起兑换数量：0.1ETH;</div>
+            <div class="grey">1.FIL最低起兑换数量：0.1FIL;</div>
             <div class="grey">1.、兑换由第三方大宗商家承兑;</div>
         </div>
         <div class="submit" @click="openPwd">确定兑换</div>
@@ -62,7 +62,7 @@
                 <span>选择币种</span>
                 <van-icon name="cross" @click="showmask = false"></van-icon>
             </div>
-            <div class="item flex ali_center" @click="change('BTC')">
+            <!-- <div class="item flex ali_center" @click="change('BTC')">
                 <img src="@/assets/images/icon/jyjl.png" alt="">
                 <div class="info">
                     <div class="num">BTC</div>
@@ -75,12 +75,19 @@
                     <div class="num">ETH</div>
                     <div class="type">余额：{{eth}}ETH</div>
                 </div>
-            </div>
+            </div> -->
             <div class="item flex ali_center" @click="change('FIL')">
                 <img src="@/assets/images/icon/jyjl.png" alt="">
                 <div class="info">
                     <div class="num">FIL</div>
                     <div class="type">余额：{{fil}}FIL</div>
+                </div>
+            </div>
+            <div class="item flex ali_center" @click="change('USDT')">
+                <img src="@/assets/images/icon/jyjl.png" alt="">
+                <div class="info">
+                    <div class="num">USDT</div>
+                    <div class="type">余额：{{usdt}}USDT</div>
                 </div>
             </div>
         </div>
@@ -122,12 +129,18 @@ export default {
             fil: "",
             rates: "",
             showPwd: false,
+            huantype:'USDT'
         };
     },
     created() {
         this.type = this.$route.params.type;
         this.num = this.$route.params.num;
         this.getData()
+        if(this.type == 'FIL'){
+            this.huantype = 'USDT'
+        }else{
+            this.huantype = 'FIL'
+        }
     },
     mounted() {
         this.daojishi();  
@@ -140,8 +153,10 @@ export default {
     computed:{
         receivenum(){
             let accountTan = this.type
-            this.currenhulv(accountTan, 'USDT')
+            let accountAcc = this.huantype
             let feeTan = this.duihuannum
+            this.currenhulv(accountTan, accountAcc)
+            
             let jieguo = (feeTan * this.rates).toFixed(4) 
             return   jieguo == 0 ? '输入数量' : jieguo
         }
@@ -171,13 +186,14 @@ export default {
         },
         async noticePwd(){
             let accountTan = this.type
+            let accountAcc = this.huantype
             let feeTan = this.duihuannum
             if(!feeTan) return Toast('请输入数量')
-            this.currenhulv(accountTan, 'USDT')
+            this.currenhulv(accountTan, accountAcc)
             let res = await $ajax('userexchange', {
                 accountTan: accountTan,
                 feeTan: feeTan,
-                accountAcc: 'USDT',
+                accountAcc: accountAcc,
                 feeAcc: feeTan / this.rates
             })
             if(!res) return false
@@ -211,12 +227,17 @@ export default {
         change(type) {
             this.type = type;
             this.showmask = false;
-            if(type == 'BTC'){
-                this.num = this.btc
-            }else if(type == 'ETH'){
-                this.num = this.eth
-            }else if(type == 'FIL'){
-                this.num = this.fil
+            // if(type == 'BTC'){
+            //     this.num = this.btc
+            // }else if(type == 'ETH'){
+            //     this.num = this.eth
+            // }else if(type == 'FIL'){
+            //     this.num = this.fil
+            // }
+            if(this.type == 'FIL'){
+                this.huantype = 'USDT'
+            }else{
+                this.huantype = 'FIL'
             }
         },
         gorecharge(type){
