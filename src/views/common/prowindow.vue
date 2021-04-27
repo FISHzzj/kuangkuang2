@@ -6,10 +6,10 @@
                 <span>{{productInfo.title}}</span>
                 <van-icon name="cross" @click="close" />
             </div>
-            <div class="type flex ali_center">
+            <!-- <div class="type flex ali_center">
                 <div class="flex ali_center">有效算力<p>{{productInfo.suanli}} <span>TH/台</span></p></div>
                 <div class="flex ali_center">租赁期限<p>{{productInfo.zupin}}</p></div>
-            </div>
+            </div> -->
             <div class="pro_num flex ali_center flex_between">
                 <div class="left">购买台数</div>
                 <div class="num flex ali_center">
@@ -18,17 +18,17 @@
                     <div @click="add" class="add">+</div>
                 </div>
             </div>
-            <div class="freeing flex">
+            <!-- <div class="freeing flex">
                 <a href="javascript:;" @click="changenav(item.id)" v-for="(item, index) in productInfo.shopdays" :key="index">
                     <div class="item" :class="{on: item.id == status}">
                         <p class="days">预缴{{item.title}}天</p>
                         <p class="money">{{item.value}}CNY/台</p>
-                        <!-- <div class="discount">8折</div> -->
+                        <div class="discount">8折</div>
                     </div>
                 </a>
-            </div>
+            </div> -->
             <div class="sub_btn flex ali_center flex_between">
-                <div class="left">总价<span>{{all_money}}</span>CNY</div>
+                <div class="left">总价<span>{{all_money}}{{productInfo.catetype}}</span></div>
                 <div class="right" :class="{on: status}" @click="submit">提交订单</div>
             </div>
         </div>
@@ -50,7 +50,7 @@ export default {
     data() {
         return {
             status: "",
-            num: 1,
+            num: 0,
             all_money: "0.00"
         };
     },
@@ -60,11 +60,11 @@ export default {
     methods: {
         async gettotal( ) {
             let id = this.$route.query.id
-            if(!this.num || this.num == "" || this.num < 0) return Toast("购买数量不能低于1台!")
+            if(!this.num || this.num == "" || this.num == 0) return Toast("购买数量不能低于1台!")
              let res = await $ajax('goodstotals', {
                 totalNum: this.num,
                 goodsid: id,
-                pid: this.status
+                // pid: this.status
             })
             if (!res) return false
             this.all_money = res.money
@@ -105,13 +105,15 @@ export default {
             let id = this.$route.query.id
             let num = this.num
             let price = this.all_money
-            let pid = this.status
+            // if(num == 0) 
+            if(!this.num || this.num == "" || this.num == 0) return Toast("购买数量不能低于1台!")
+            // let pid = this.status
 
             this.$router.push({name: 'orderSubmit', query: {
                 id,
                 num,
                 price,
-                pid
+                // pid
              }})
             // this.$router.push({
             //     path: `"/order/submit/${id}/${num}/${price}/${pid}"`

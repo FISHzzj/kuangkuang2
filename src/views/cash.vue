@@ -99,7 +99,7 @@ export default {
             list:[],
             right: false,
             wushoukuan: true,
-            paytext: "银行卡",
+            paytext: "FIL",
             rates: '',
             usdt: '',
             btc: '',
@@ -145,6 +145,7 @@ export default {
             let res = await $ajax('userpaymentpaylist')
             if (!res) return false
             this.list = res.list
+            console.log(this.list)
             this.usdt = res.usdt
             this.btc = res.btc
             this.eth = res.eth

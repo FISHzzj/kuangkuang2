@@ -16,16 +16,16 @@
                     <div class="first flex flex_between">
                         <div class="item_1">
                             <div class="type">等级</div>
-                            <div class="num">1T</div>
+                            <div class="num">{{levelname}}T</div>
                         </div>
                         <div class="item_1">
                             <div class="type">运行周期</div>
-                            <div class="num">60/天</div>
+                            <div class="num">{{day}}/天</div>
                         </div>
                     </div>
                     <div class="second">
                         <div class="type">预计日收益</div>
-                        <div class="num">0.05FIL/天</div>
+                        <div class="num">{{yield}} {{unit}}/天</div>
                         <!-- <div class="num1">≈{{cny}}CNY/台</div> -->
                     </div>
                 </div>
@@ -43,8 +43,8 @@
             </div>
             <div class="pro_name">{{title}}</div>
             <div class="price_free flex ali_center flex_between">
-                <div class="price">{{marketprice}}<span>CNY/台</span></div>
-                <div class="right">电费: <span> {{fees}}CNY/度</span></div>
+                <div class="price">{{marketprice}}<span>{{unit}}/台</span></div>
+                <div class="right">电费: <span> {{fees}}{{unit}}/度</span></div>
             </div>  
             <div class="types flex ali_center">
                 <div class="type_1">联合挖矿</div>
@@ -53,11 +53,11 @@
             <div class="rules">
                 <div class="r_title">产出规则</div>
                 <div class="flex ">
-                    <div class="item_1">
+                    <!-- <div class="item_1">
                         <div class="time">{{shoptimestart}}</div>
                         <div class="type">购买日</div>
                         <div class="type_1"></div>
-                    </div>
+                    </div> -->
                     <div class="item_2" style="width:50vw">
                         <div class="time">{{statustimestart}}</div>
                         <div class="type">上架时间</div>
@@ -81,17 +81,17 @@
                         <td>矿机型号</td>
                         <td>{{title}}</td>
                         <td>产出币种</td>
-                        <td>{{legal_value}}</td>
+                        <td>{{catetype}}</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                        <td>额定算力</td>
                         <td>{{t_num}}TH/s</td>
                         <td>功耗</td>
                         <td>{{power}}kw/h</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td>预计产出</td>
-                        <td colspan="3">{{today_bi}} {{catetype}}/台≈{{cny}} CNY/台</td>
+                        <td colspan="3">{{yield}} {{unit}}/天</td>
          
                     </tr>
                     <tr>
@@ -101,10 +101,10 @@
                         <td>$100</td>
                     </tr>
                     <tr>
-                        <td>预计汇报率</td>
-                        <td>{{today_bi}}</td>
+                        <!-- <td>预计汇报率</td>
+                        <td>{{today_bi}}</td> -->
                         <td>上架时间</td>
-                        <td>{{statustimestart}}</td>
+                        <td colspan="3">{{statustimestart}}</td>
                     </tr>
                 </table>
             </div>
@@ -181,6 +181,9 @@ export default {
             danwei: "",
             isstatustime: "",
             day: "",
+            levelname: "",
+            yield:"",
+            unit: "",
         };
     },
     mounted() {
@@ -209,6 +212,8 @@ export default {
                 title: this.title,
                 suanli: this.t_num,
                 zupin: this.isstatustime == 1 ? this.day : '永久',
+                catetype: this.catetype,
+
             }
             if(this.catetype == 'BTC'){
                 this.danwei = 'TH/s'

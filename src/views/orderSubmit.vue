@@ -19,10 +19,10 @@
                  <span class="copy" :data-clipboard-text="ordersn">复制</span>
                
             </div>
-            <div class="order_id flex ali_center flex_between" v-if="wallet">
+            <!-- <div class="order_id flex ali_center flex_between" v-if="wallet">
                 <div class="">钱包地址：<span>{{wallet}}</span></div>
                  <span class="copy" :data-clipboard-text="wallet">复制</span>
-            </div>
+            </div> -->
             
            
         </div>
@@ -34,24 +34,24 @@
             </div>
             <div class="item num flex ali_center flex_between">
                 <p>矿机总价</p>
-                <span>{{price/rates}}{{paytype}}</span>
+                <span>{{price}}{{paytype}}</span>
             </div>
-            <div class="item num flex ali_center flex_between">
+            <!-- <div class="item num flex ali_center flex_between">
                 <p>预缴电费</p>
                 <span>{{shopday}}天</span>
-            </div>
-            <div class="item num flex ali_center flex_between">
+            </div> -->
+            <!-- <div class="item num flex ali_center flex_between">
                 <p>电费金额</p>
                 <span>{{fees/rates}}{{paytype}}</span>
-            </div>
+            </div> -->
             <div class="money">
-                <p>总价 <span>{{realprice/rates}}</span> {{paytype}}</p>
+                <p>总价 <span>{{realprice}}</span> {{paytype}}</p>
             </div>
         </div>
         <div class="tips">确定支付后不支持退款,请仔细确定订单信息</div>
         <div class="pay_ways">
             <div class="title">支付方式</div>
-            <div class="item flex ali_center flex_between" @click="change('usdt')" >
+            <div class="item flex ali_center flex_between" @click="change('usdt')" v-if="paystatus == 2">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
                     <span>USDT支付</span>
@@ -60,7 +60,7 @@
                 <img v-if="paytype == 'usdt'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
-            <div class="item flex ali_center flex_between" @click="change('btc')" v-if="paystatus == 1">
+            <!-- <div class="item flex ali_center flex_between" @click="change('btc')" v-if="paystatus == 1">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
                     <span>BTC支付</span>
@@ -75,23 +75,23 @@
                 </div>
                 <img v-if="paytype == 'cny'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
-            </div>
-            <div class="item flex ali_center flex_between" @click="change('fil')" v-if="paystatus == 3">
+            </div> -->
+            <div class="item flex ali_center flex_between" @click="change('fic')" v-if="paystatus != 2">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
-                    <span>FIL支付</span>
+                    <span>FIC支付</span>
                 </div>
-                <img v-if="paytype == 'fil'" src="@/assets/images/dui.png" alt="" />
+                <img v-if="paytype == 'fic'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
-            <div class="item flex ali_center flex_between" @click="change('eth')" v-if="paystatus == 2">
+            <!-- <div class="item flex ali_center flex_between" @click="change('eth')" v-if="paystatus == 2">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
                     <span>ETH支付</span>
                 </div>
                 <img v-if="paytype == 'eht'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
-            </div>
+            </div> -->
         </div>
         <div class="safe_tips flex ali_center">
             <img src="@/assets/images/dui.png" alt="" />同意
@@ -100,7 +100,7 @@
         <div class="tips1">投资有风险,入市需谨慎</div>
         <div style="height:15vw"></div>
         <div class="footer flex flex_between ali_center">
-            <div class="left">总价 <span>{{realprice/rates}}</span>{{paytype}}</div>
+            <div class="left">总价 <span>{{realprice}}</span>{{paytype}}</div>
             <div class="right" @click="openPwd">确定支付</div>
         </div>
         <pay-pwd
@@ -120,7 +120,7 @@ export default {
     },
     data() {
         return {
-            paytype: "usdt",
+            paytype: "fic",
             showPwd: false,
             price:"",
             wallet: "",
@@ -143,20 +143,20 @@ export default {
     mounted() {
         this.clipboard = copy('.copy');
         this.getData()
-        this.change('usdt')
+        // this.change('fic')
     },
     methods: {
         async getData() {
-            let {id, num, price, pid} = this.$route.query
+            let {id, num, price} = this.$route.query
             if(!id) return Toast('id 不能为空')
             if(!num) return Toast('num 不能为空')
             if(!price) return Toast('price 不能为空')
-            if(!pid) return Toast('pid 不能为空')
+            // if(!pid) return Toast('pid 不能为空')
             let res = await $ajax('kuangorder', {
                 goodsid: id,
                 total: num,
                 price,
-                pid
+                
             })
             if (!res) return false
             let order = res.order
@@ -214,7 +214,7 @@ export default {
             let fees = this.fees
             let realprice = this.realprice
             let typeval = type.toUpperCase()
-            this.currenhulv(typeval, 'CNY')
+            // this.currenhulv(typeval, 'CNY')
 
             // if(this.paytype == 'usdt'){
                 

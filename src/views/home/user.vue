@@ -12,6 +12,9 @@
             <div class="right">
                 <div class="nickname">{{nickname}}</div>
                 <div class="mobile">{{mobile}}</div>
+                <div class="mobile" v-if="acce_type != 0 ">{{acce_type == 0 ? '普通':'承兑商'}}</div>
+                <div class="mobile" v-if="mine_status != 0 ">{{mine_status == 0 ? '普通':'有效旷工'}}</div>
+                <!-- <div class="mobile">{{acce_type == 0 ? '普通':'承兑商'}}</div> -->
             </div>
             <div class="mini">
                 <van-button type="primary" size="mini" @click="minihandle">{{mini}}</van-button>
@@ -77,7 +80,7 @@
         <div class="all_money flex ali_center flex_between">
             <div class="left">  <!-- 资产预估(CNY) <span>≈ {{credit2}}</span> --></div>
             <div class="right flex ali_center" >
-                <div class="cash" @click="$router.push('/cash')">提现</div>
+                <!-- <div class="cash" @click="$router.push('/cash')">提现</div> -->
                 <p></p>
                 <div class="recharge" @click="$router.push('/recharge/FC')">充值</div>
             </div>
@@ -104,13 +107,13 @@
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>
-            <!-- <div class="item flex ali_center flex_between">
+            <div @click="$router.push('/myteam')" class="item flex ali_center flex_between" >
                 <div class="left flex ali_center">
-                    <img src="" alt="" />
-                    <span>卡券包</span>
+                    <img src="@/assets/images/icon/daili.png" alt="" />
+                    <span>我的团队</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
-            </div> -->
+            </div>
             <div @click="$router.push('/pinorder')" class="item flex ali_center flex_between" >
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/daili.png" alt="" />
@@ -121,7 +124,7 @@
             <div @click="$router.push('/cdslist')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/shoufukuan.png" alt="" />
-                    <span>承兑商</span>
+                    <span>签到记录</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div> 
@@ -192,7 +195,7 @@ export default {
                 type: "sign"
             })
             if(!res) return false
-            Toast(res)
+            Toast(res.msg)
         },
         closeservice(e) {
             this.showService = false;
@@ -206,6 +209,14 @@ export default {
             this.nickname = res.nickname
             this.mobile = res.mobile
             this.credit2 = res.credit2
+            this.acce_type = res.acce_type
+            this.mine_status = res.mine_status
+            let signType = res.signType
+            if(signType == 0){
+                this.mini = '未签到'
+            }else{
+                this.mini = '已签到'
+            }
         },
     }
 };

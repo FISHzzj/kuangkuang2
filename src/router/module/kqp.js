@@ -110,13 +110,14 @@ export default [
         }
     },
     {
-        path: '/porderdetail', // 拼团订单详情
-        name: 'porderdetail',
-        component: () => import("@/views/porderdetail.vue"),
+        path: '/myteam', // 我的团队
+        name: 'myteam',
+        component: () => import("@/views/myteam.vue"),
         props: false,//1111,
         meta:{
             index: 1,
             mustLogin: true,//
         }
     },
+
 ]

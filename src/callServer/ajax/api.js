@@ -76,8 +76,14 @@ export default {
     userrechargesetUsdt: `${common}do=mobile&r=user.recharge.setUsdt`, //usdt充值
     userrechargeinfo: `${common}do=mobile&r=user.recharge.info`, //usdt/记录详情
     userrechargesetFIL: `${common}do=mobile&r=user.recharge.setFIL`, //fil提现
+    userhuzhuan: `${common}do=mobile&r=user.huzhuan`, //fil提现
+    signsignList: `${common}do=mobile&r=sign.signList`, //签到记录
+    userteamList: `${common}do=mobile&r=user.teamList`, //签到记录
+    
+    
     // userrechargedontPay: `${common}do=mobile&r=user.recharge.dontPay`, //取消订单
     
+
 
     
     

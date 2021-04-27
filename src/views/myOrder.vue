@@ -7,7 +7,7 @@
         <div class="list" v-for="item in list" :key="item.id">
             <div class="item flex" @click="$router.push({name: 'orderlist', query:{id: `${item.id}`} })">
                 <img src="@/assets/images/icon/4.png" alt=""  v-if="item.name == 'BTC'"/>
-                <img src="@/assets/images/icon/2.png" alt=""  v-if="item.name == 'ETH'" />
+                <img src="@/assets/images/icon/2.png" alt=""  v-if="item.name == 'USDT'" />
                 <img src="@/assets/images/icon/3.png" alt=""  v-if="item.name == 'FIL'"/>
                 <div class="right">
                     <div class="name">{{item.name}}</div>

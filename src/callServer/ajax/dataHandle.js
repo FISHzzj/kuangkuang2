@@ -93,13 +93,16 @@ export default {
     },
     userInfo(data) {
         if ( mistake(data) ) return false
-        let {avatar, nickname, mobile, sf_type, credit2} = data.result.info
+        let {avatar, nickname, mobile, sf_type, credit2, acce_type, mine_status, signType}  = data.result.info
         return {
             avatar,
             nickname,
             mobile,
             sf_type,
             credit2,
+            acce_type,
+            mine_status,
+            signType
          
         }
     },
@@ -134,29 +137,29 @@ export default {
         // let {list, total, pagesize} = data.result
 
         let {list, thumbs} = data.result
+        console.log(list)
         let lists = []
-        list.forEach( item => {
-            let {id, title, thumb, marketprice, fees, type, total, power, today_bi, usdt, unit, cny} = item
-            lists.push({
-                id,
-                title,
-                thumb,
-                marketprice,
-                fees,
-                type,
-                total,
-                power,
-                today_bi,
-                usdt,
-                unit,
-                cny,
+        // list.forEach( item => {
+        //     console.log(item)
+        //     let {id, ccate, title, thumb, marketprice, total, limitNum, levelname, unit } = item
 
-                
-            })
+        //     lists.push({
+        //         id,
+        //         ccate,
+        //         title,
+        //         thumb,
+        //         marketprice,
+        //         total, 
+              
+        //         limitNum, 
+        //         levelname, 
+        //         unit, 
+        //         // yield
+        //     })
             
-        })
+        // })
         return {
-            lists,
+            lists:list,
             thumbs
         }
     },
@@ -221,7 +224,7 @@ export default {
         let {list, listtotal} = data.result
         let lists = []
         list.forEach( item => {
-            let {ordersn, goodsName, createtime, endtime, status, realprice, total, goodsid, pid, thumb, id} = item
+            let {ordersn, goodsName, createtime, endtime, status, realprice, total, goodsid, pid, thumb, id, paytype} = item
             lists.push({
                 ordersn,
                 goodsName,
@@ -234,6 +237,7 @@ export default {
                 pid,
                 thumb,
                 id,
+                paytype,
             })
             
         })
@@ -642,7 +646,27 @@ export default {
             msg: message
         }
     },
-
+    userhuzhuan(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+    signsignList(data){
+        if ( mistake(data) ) return false
+        let {list} = data.result
+        return{
+            list
+        }
+    },
+    userteamList(data){
+        if ( mistake(data) ) return false
+        let {list} = data.result
+        return{
+            list
+        }
+    },
 
 
 

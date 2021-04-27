@@ -11,14 +11,14 @@
                 <div class="num">{{money}}</div>
             </div> -->
             <div class="bottom flex flex_between ali_center">
-                <div class="left" v-if="type !== 'FIL'">
+                <div class="left" >
                     <div class="type">{{type}}总资产</div>
                     <div class="num">{{money}}</div>
                 </div>
-                <div class="left" v-else>
+                <!-- <div class="left" v-else>
                     <div class="type">{{type}}总资产</div>
                     <div class="num">{{fil_sys}}</div>
-                </div>
+                </div> -->
                 <!-- <div class="right" v-if="type == 'FIL'" @click="suocanglist">
                     <div class="type">{{type}}锁仓资金</div>
                     <div class="num">{{fil_frozen}}</div>
@@ -63,6 +63,7 @@
                 <span>兑换</span>
             </div>
             <div class="cash" :class="{on:type == 'FIL'}" v-if="type == 'FIL'" @click="$router.push('/cash')">提现</div>
+            <div class="huzhuan" :class="{on:type == 'FC'}" v-if="type == 'FC'" @click="$router.push('/huzhuan')">互转</div>
             <div class="recharge" :class="{on:type == 'USDT' || type == 'FC'}" v-if="type == 'USDT' || type == 'FC'" @click="gorecharge">充值</div>
         </div>
     </div>
@@ -90,6 +91,7 @@ export default {
     created() {
         this.type = this.$route.params.type;
         this.money = this.$route.params.num;
+        console.log(this.money)
         this.currenhulv(this.type,'CNY')
         this.getsoucang()
     },
@@ -307,6 +309,14 @@ export default {
             justify-content: center;
         }
         .cash {
+            color: #fff;
+            line-height: 12vw;
+            background: #ef63a8;
+            &.on {
+                width: 44vw;
+            }
+        }
+        .huzhuan {
             color: #fff;
             line-height: 12vw;
             background: #ef63a8;

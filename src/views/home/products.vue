@@ -33,16 +33,16 @@
                         <div class="left">
                             <!-- <div class="type">{{item.title}}</div> -->
                             <img :src="item.thumb" class="pro_img" alt="" />
-                            <div class="num">限购：<span>2</span>台</div>
+                            <div class="num">限购：<span>{{item.limitNum}}</span>台</div>
                         </div>
                         <div class="right">
-                            <div class="name line">FIL矿机</div>
-                            <div class="first second">  运行周期:60天  |  等级:1T</div> 
+                            <div class="name line">{{item.title}}</div>
+                            <div class="first second">  运行周期:{{item.statustimeend}}天  |  等级:{{item.levelname}}T</div> 
                             
-                            <div class="first">预计日产出:0.05FIL/天</div>
-                            <div class="first">≈3500 FIC/台</div>
+                            <div class="first">预计日产出:{{item.yield}}{{item.unit}}/天</div>
+                            <div class="first">≈{{item.marketprice}} {{item.unit}}/台</div>
                             <div class="bottom">
-                                <div class="price">3500<span>FIC</span></div>
+                                <div class="price">{{item.marketprice}}<span>{{item.unit}}</span></div>
                                 <!-- <div class="price1">≈{{item.usdt}}USDT</div> -->
                             </div>
                         </div>
