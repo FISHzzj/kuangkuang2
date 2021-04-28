@@ -27,7 +27,7 @@
            
         </div>
         <div class="orderInfo">
-            <div class="title">联合挖矿S19 pro</div>
+            <div class="title">{{goodsName}}</div>
             <div class="item num flex ali_center flex_between">
                 <p>购买台数</p>
                 <span>x{{total}}</span>
@@ -51,13 +51,13 @@
         <div class="tips">确定支付后不支持退款,请仔细确定订单信息</div>
         <div class="pay_ways">
             <div class="title">支付方式</div>
-            <div class="item flex ali_center flex_between" @click="change('usdt')" v-if="paystatus == 2">
+            <div class="item flex ali_center flex_between" @click="change('USDT')" v-if="paystatus == 1">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
                     <span>USDT支付</span>
                     <!-- <p>9.8折优惠</p> -->
                 </div>
-                <img v-if="paytype == 'usdt'" src="@/assets/images/dui.png" alt="" />
+                <img v-if="paytype == 'USDT'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
             <!-- <div class="item flex ali_center flex_between" @click="change('btc')" v-if="paystatus == 1">
@@ -76,12 +76,12 @@
                 <img v-if="paytype == 'cny'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div> -->
-            <div class="item flex ali_center flex_between" @click="change('fic')" v-if="paystatus != 2">
+            <div class="item flex ali_center flex_between" @click="change('FIC')" v-if="paystatus == 3">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
                     <span>FIC支付</span>
                 </div>
-                <img v-if="paytype == 'fic'" src="@/assets/images/dui.png" alt="" />
+                <img v-if="paytype == 'FIC'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
             <!-- <div class="item flex ali_center flex_between" @click="change('eth')" v-if="paystatus == 2">
@@ -120,7 +120,7 @@ export default {
     },
     data() {
         return {
-            paytype: "fic",
+            paytype: "FIC",
             showPwd: false,
             price:"",
             wallet: "",
@@ -144,6 +144,7 @@ export default {
         this.clipboard = copy('.copy');
         this.getData()
         // this.change('fic')
+        
     },
     methods: {
         async getData() {
@@ -164,6 +165,11 @@ export default {
                 this[key] = order[key]
             }) 
             this.paystatus = res.paystatus
+            if(this.paystatus == 1){
+                this.paytype = 'USDT';
+            }else{
+                this.paytype = 'FIC';
+            }
             
         },
         async currenhulv(current, value){
@@ -179,16 +185,17 @@ export default {
         async noticePwd(e) {
             let {id, num, price, pid} = this.$route.query
             if(!this.paytype) return Toast("请选择支付方式")
+            let paytype = this.paytype.toLowerCase()
             let status = e.status
             if(status != 1) return false
             let res = await $ajax('kuangorderpay', {
                 goodsid: id,
                 total: num,
-                price: this.price / this.rates, // 矿机单价
-                realprice: price / this.rates, //总价
-                pid,
-                fees: this.fees,
-                payType: this.paytype,
+                price: this.price, // 矿机单价
+                realprice: price, //总价
+                // pid,
+                // fees: this.fees,
+                payType: paytype,
                 ordersn: this.ordersn
 
             })

@@ -45,14 +45,14 @@
                                 <div class="num">X{{item.total}}</div>
                             </div>
                             <div class="buy_time">购买日：{{item.createtime}}</div>
-                            <div class="buy_time">电费到期日：{{item.endtime}}</div>
+                            <div class="buy_time">支付方式：{{item.paytype}}</div>
                             <div class="bottom flex ali_center flex_between">
                                 <div class="left">总价<span>{{item.realprice}}</span>{{item.paytype}}</div>
-                                <div class="right flex ali_center">
+                                <!-- <div class="right flex ali_center">
                                     <span v-if="item.status == 2" style="border:1px solid #da428d;color:#da428d;">续缴电费</span>
                                     <span v-else>终止产品</span>
 
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </router-link>
@@ -138,6 +138,7 @@ export default {
             console.log(res.lists)
             this.listtotal = res.listtotal
             this.list.push(...res.lists)
+            
             // // 加载状态结束
             this.loading = false
             if (res.lists.length === 0) {

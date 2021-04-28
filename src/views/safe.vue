@@ -15,14 +15,14 @@
                     <span class="success" >{{sf_type == 1 ? '认证成功' : '未认证'}}</span>
                 </div>
             </div>
-            <div @click="showmask = true" class="item flex flex_between ali_center" >
+            <div @click="resetpwd(1)" class="item flex flex_between ali_center" >
                 <div class="left">重置登录密码</div>
                 <div class="right flex ali_center">
                     <span>重置</span>
                     <van-icon color="#999" name="arrow"></van-icon>
                 </div>
             </div>
-            <div @click="showmask = true" class="item flex flex_between ali_center">
+            <div @click="resetpwd(2)" class="item flex flex_between ali_center">
                 <div class="left">重置交易密码</div>
                 <div class="right flex ali_center">
                     <span>重置</span>
@@ -45,7 +45,7 @@
             <div class="title">交易密码</div>
             <div class="flex input ali_center flex_between">
                 <input v-model="code" type="text" placeholder="输入短信验证码" />
-                <span @click="senVerifyCode()">获取验证码</span>
+                <span @click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
                 <div class="btn" @click="submit">确定</div>
             </div>
         </div>
@@ -101,8 +101,19 @@ export default {
                 this.$router.push("/user/realname")
             }
         },
+        resetpwd(setType){
+            this.showmask = true;
+            this.setType = setType
+        },
         submit() {
-            
+            if(!this.code) return Toast('请先输入验证码')
+             this.$router.push({
+                 name: 'changepwd',
+                 query:{
+                     code: this.code,
+                     setType: this.setType
+                 }
+             })
         }
     }
 };

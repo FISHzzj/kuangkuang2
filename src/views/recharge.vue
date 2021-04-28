@@ -7,20 +7,20 @@
         </div>
         <div class="nav flex ali_center flex_between">
             <div class="item on">
-                承兑商充值
+                FC充值
             </div>
             <div class="item" @click="gopage('/exchange/USDT/转入')">
-                USDT转入
+                USDT充值
             </div>
         </div>
         <div class="money">
-            <div class="type">FC拼单积分</div>
+            <div class="type">FC</div>
             <div class="num">{{money}}</div>
         </div>
         <div class="buy_num">
-            <div class="title">充值FC拼单积分</div>
+            <div class="title">充值FC</div>
             <div class="input flex ali_center flex_between">
-                <input type="number" v-model="num" placeholder="请输入FC拼单积分，限整数" style="width: 75%;"/>
+                <input type="number" v-model="num" placeholder="请输入FC，限整数" style="width: 75%;"/>
                 <span>FC</span>
             </div>
             <!-- <div class="title">提示：整50倍数充值</div> -->

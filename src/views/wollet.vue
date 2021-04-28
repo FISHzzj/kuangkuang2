@@ -31,7 +31,7 @@
             <div @click="godetail(`FC/${fc}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/1.png" alt="" />
-                    <span>FC拼单积分</span>
+                    <span>FC</span>
                 </div>
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{fc}}</div>
@@ -76,10 +76,10 @@
                     <div class="num1" v-else>* * * *</div> -->
                 </div>
             </div>
-            <div @click="godetail(`忠诚度/${loyalty}`)" class="item flex ali_center">
+            <div @click="godetail(`共识度/${loyalty}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/3.png" alt="" />
-                    <span>忠诚度</span>
+                    <span>共识度</span>
                 </div>
                 <div class="right">
                     <div class="num" v-if="iconeyeclose">{{loyalty}}</div>
@@ -98,7 +98,7 @@
             <div v-if="type == 4" class="item flex ali_center" @click="gonext('FC')">
                 <img src="@/assets/images/icon/1.png" alt="">
                 <div class="info">
-                    <div class="num">FC拼单积分</div>
+                    <div class="num">FC</div>
                     <div class="type">余额：{{fc}}FC</div>
                 </div>
             </div>

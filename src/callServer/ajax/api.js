@@ -79,6 +79,9 @@ export default {
     userhuzhuan: `${common}do=mobile&r=user.huzhuan`, //fil提现
     signsignList: `${common}do=mobile&r=sign.signList`, //签到记录
     userteamList: `${common}do=mobile&r=user.teamList`, //签到记录
+    useracce: `${common}do=mobile&r=user.acce`, //获取要打款的账户
+    useraccegetFc: `${common}do=mobile&r=user.acce.getFc`, //确认打款
+    
     
     
     // userrechargedontPay: `${common}do=mobile&r=user.recharge.dontPay`, //取消订单

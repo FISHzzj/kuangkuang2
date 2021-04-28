@@ -21,7 +21,7 @@
                         <span>{{price}}</span>
                     </div>
                     <div class="des">
-                        <p>11人拼团</p>
+                        <p>{{groupnum}}人拼团</p>
                         <p>{{rand_num}}人得奖励</p>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
                     <p>{{fic}}</p>
                 </div>
             </div>
-            <div class="pinklist">
+            <div class="pinklist" v-if="total">
                 <div class="title flex ali_center flex_between">
-                    <div class="left">{{total}}人正在拼团,可直接参与</div>
+                    <div class="left">{{total || 0}}人正在拼团,可直接参与</div>
                     <div class="right flex ali_center" @click="chakanlist">
                         <span>查看参团成员</span>
                         <van-icon name="arrow"></van-icon>
@@ -130,8 +130,10 @@ export default {
             Object.keys(res).forEach((key) => {
                 this[key] = res[key]
             })
+            this.fic = parseInt(this.fic)
         },
         chakanlist(){
+            if(!this.total) return false
             this.$router.push({
                 path: "/pinklist/" + this.teamid
             })
@@ -212,6 +214,8 @@ export default {
                         margin-left: 1vw;
                         font-size: 3.2vw;
                         font-weight: 100;
+                        text-decoration: line-through;
+                        margin-top: 3px;
                     }
                 }
                 .des {

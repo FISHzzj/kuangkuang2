@@ -44,12 +44,12 @@
             <div class="pro_name">{{title}}</div>
             <div class="price_free flex ali_center flex_between">
                 <div class="price">{{marketprice}}<span>{{unit}}/台</span></div>
-                <div class="right">电费: <span> {{fees}}{{unit}}/度</span></div>
+                <!-- <div class="right">电费: <span> {{fees}}{{unit}}/度</span></div> -->
             </div>  
-            <div class="types flex ali_center">
+            <!-- <div class="types flex ali_center">
                 <div class="type_1">联合挖矿</div>
                 <div class="type_2">优先回本</div>
-            </div>
+            </div> -->
             <div class="rules">
                 <div class="r_title">产出规则</div>
                 <div class="flex ">
@@ -81,7 +81,7 @@
                         <td>矿机型号</td>
                         <td>{{title}}</td>
                         <td>产出币种</td>
-                        <td>{{catetype}}</td>
+                        <td>FIL</td>
                     </tr>
                     <!-- <tr>
                        <td>额定算力</td>
@@ -96,7 +96,7 @@
                     </tr>
                     <tr>
                        <td>服务周期</td>
-                        <td>{{isstatustime == 1 ? day : '永久'}}</td>
+                        <td>{{day}}/天</td>
                         <td>管理费</td> 
                         <td>$100</td>
                     </tr>

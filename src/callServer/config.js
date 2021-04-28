@@ -3,5 +3,5 @@ let isPro = process.env.NODE_ENV === 'production' //process.env.NODE_ENV用于�
 //根据环境不同导出不同的baseURL
 
 export default {
-    baseURL: isPro ? `http://${location.hostname}` : '/apis'
+    baseURL: isPro ? `http://${location.host}` : '/apis'
 }

@@ -119,5 +119,35 @@ export default [
             mustLogin: true,//
         }
     },
+    {
+        path: '/chengduishang', // 打款列表
+        name: 'chengduishang',
+        component: () => import("@/views/chengduishang.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
+    {
+        path: '/accegetfc', // 确认打款
+        name: 'accegetfc',
+        component: () => import("@/views/accegetfc.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
+    {
+        path: '/porderdetail', // 拼团订单
+        name: 'porderdetail',
+        component: () => import("@/views/porderdetail.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    }
 
 ]

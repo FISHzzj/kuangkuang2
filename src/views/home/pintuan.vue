@@ -2,8 +2,10 @@
     <div class="index">
         <!-- 首页轮播 -->
         <swiper ref="mySwiper" class="mySwiper" :options="swiperOptions">
-            <swiper-slide v-for="(item, index) in 5" :key="index">
-                <img src="@/assets/images/vip3.png" alt="">
+            <swiper-slide v-for="(item, index) in banner" :key="index">
+                <a :href="item.url">
+                    <img :src="item.img" alt="">
+                </a>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
@@ -11,11 +13,13 @@
         <div class="notice flex ali_center">
             <img src="@/assets/images/home/laba.png" alt="">
             <swiper ref="notice" class="swiper" :options="noticeSwiper">
-                <swiper-slide v-for="(item, index) in 5" :key="index">
-                    <p class="line">这里是公告这里是公告这里是公告这里是公告这里是公告</p>
+               <swiper-slide v-for="(item, index) in bannerTxt" :key="index" >
+                    <div style="color:#da428d;">
+                        <p class="line" @click="$router.push('/gonggao/'+ item.id )">{{item.title}}</p>
+                    </div>
                 </swiper-slide>
             </swiper>
-            <div class="more">更多</div>
+            <div class="more"></div>
         </div>
         <div class="list">
             <div class="title flex ali_center flex_between">
@@ -82,13 +86,29 @@ export default {
                 },
             },
             // list: []
+            banner:[],
+            bannerTxt: [],
         };
     },
     mounted(){
         // this.onLoad()
+        this.getlist()
     },
     methods:{
-       
+       async getlist(){
+            let res = await $ajax('kuang', {})
+            if (!res) return false
+            this.banner = res.banner
+            this.bannerTxt = res.bannerTxt
+            // this.btc = res.btc
+            // this.eth = res.eth
+            // this.fil = res.fil
+            // this.footer = res.footer
+            // this.btc_url = res.btc_url
+            // this.eth_url = res.eth_url
+            // this.fil_url = res.fil_url
+            
+        },
     },
     
 };

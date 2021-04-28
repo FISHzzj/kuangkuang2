@@ -413,6 +413,16 @@ export default [
         }
     },
     {
+        path: '/changepwd', // 修改登陆密码
+        name: 'changepwd',
+        component: () => import("@/views/changepwd.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
+    {
         path: "/login", //登录
         name: "login",
         component: () => import("@/views/login.vue"),

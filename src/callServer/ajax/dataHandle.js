@@ -667,8 +667,21 @@ export default {
             list
         }
     },
-
-
+    useracce(data){
+        if ( mistake(data) ) return false
+        let {list} = data.result
+        return{
+            list
+        }
+    },
+    useraccegetFc(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
+    
 
 
 

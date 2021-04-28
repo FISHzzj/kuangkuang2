@@ -37,10 +37,10 @@
             <div class="ali_center btns flex flex_between">
                 <div class="left">
                     <div class="a">
-                    11人拼团
+                    {{item.groupnum}}人拼团
                     </div>
                     <div class="b">
-                    8人奖励1%FC
+                    {{item.rand_num}}人奖励{{item.fic}}FIC 
                     </div>
                 </div>
                 <van-icon name="arrow" color="#fc4142"></van-icon>   
@@ -137,6 +137,9 @@ export default {
                     .ot_price {
                         color: #999999;
                         font-size: 3.2vw;
+                        text-decoration:line-through;
+                        margin-top: 5px;
+                        margin-left: 6px;
                     }
                 }
                 .pinkmember {

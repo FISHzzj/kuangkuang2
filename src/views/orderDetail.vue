@@ -12,8 +12,8 @@
                 <img src="@/assets/images/icon/1.png" alt="" />
                 <div class="">
                     <div class="status">订单生效中</div>
-                    <div class="time">创建时间: <span>{{createtime}}</span></div>
-                    <div class="time">上架时间: <span>{{statustimestart}}</span></div>
+                    <div class="time">购买日: <span>{{createtime}}</span></div>
+                    <div class="time">结束日: <span>{{endtime}}</span></div>
                 </div>
             </div>
             <div class="order_id flex ali_center flex_between">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <!-- 电费到期时间 -->
-        <div class="fee_time">
+        <!-- <div class="fee_time">
             <div class="fee_top flex ali_center">
                 <div class="left">
                     <div class="num">{{day}}</div>
@@ -34,9 +34,9 @@
                 </div>
             </div>
             <div class="fee_bottom">为确保收益,请在电费到期日前续缴电费.</div>
-        </div>
+        </div> -->
         <!-- 回本进度 -->
-        <div class="diliver_pro">
+        <!-- <div class="diliver_pro">
             <div class="title flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <span>回本进度</span>
@@ -73,7 +73,7 @@
                     <van-icon name="arrow"></van-icon>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- <div class="goods_info flex ali_center">
             <img src="" alt="" />
             <div class="infos">
@@ -118,17 +118,21 @@
                 <div class="right">{{price}}</div>
             </div>
             <div class="item flex ali_center flex_between">
+                <div class="left">到期天数</div>
+                <div class="right">{{day}}</div>
+            </div>
+            <!-- <div class="item flex ali_center flex_between">
                 <div class="left">电费单位</div>
                 <div class="right">{{goods_fees}} CNY/度</div>
-            </div>
-            <div class="item flex ali_center flex_between">
+            </div> -->
+            <!-- <div class="item flex ali_center flex_between">
                 <div class="left">预缴天数</div>
                 <div class="right">{{feesTotal}}</div>
-            </div>
-            <div class="item flex ali_center flex_between">
+            </div> -->
+            <!-- <div class="item flex ali_center flex_between">
                 <div class="left">待缴电费金额</div>
                 <div class="right">{{fees}}</div>
-            </div>
+            </div> -->
              <!-- <div class="item flex ali_center flex_between">
                 <div class="left">待缴电费天数</div>
                 <div class="right">{{fees}}</div>
@@ -149,21 +153,21 @@
                 <div class="left">支付方式</div>
                 <div class="right">{{payType}}</div>
             </div>
-            <div class="item flex ali_center flex_between">
+            <!-- <div class="item flex ali_center flex_between">
                 <div class="left">{{payType}}支付汇率</div>
                 <div class="right">{{huilv}}</div>
-            </div>
+            </div> -->
             <div class="item money flex ali_center flex_between">
                 <div class="left"></div>
                 <div class="right">实付<span></span>{{realprice}}</div>
             </div>
         </div>
         <div style="height:15vw"></div>
-        <div class="footer flex flex_between ali_center" @click="xujiaodianfei">
-            <!-- <div class="item">产品扩容</div> -->
+        <!-- <div class="footer flex flex_between ali_center" @click="xujiaodianfei">
+            <div class="item">产品扩容</div>
             <div class="subfee">续缴电费</div>
-            <!-- <div class="item item1">续期产品</div> -->
-        </div>
+            <div class="item item1">续期产品</div>
+        </div> -->
         <service
             :showService="showService"
             @close="closeservice"
