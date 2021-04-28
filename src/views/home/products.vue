@@ -50,10 +50,10 @@
             </van-list>
 
         </div>
-        <div class="bgbottom flex ali_center">
+        <!-- <div class="bgbottom flex ali_center">
             <img src="@/assets/images/home/laba_bai.png" alt="">
             <div>专业的矿机租赁 算力交易平台</div>
-        </div>
+        </div> -->
         <bottom-nav></bottom-nav>
     </div>
 </template>

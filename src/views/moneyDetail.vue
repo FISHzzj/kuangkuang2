@@ -111,13 +111,13 @@ export default {
         },
         async getData(){
             let type = this.type.toLowerCase()
-            if(type == "cny"){
+            if(type == "fc"){
                 this.accountType = 0
             }else if(type == "usdt"){
                 this.accountType = 3
-            }else if(type == "btc"){
+            }else if(type == "fic"){
                 this.accountType = 4
-            }else if(type == "eth"){
+            }else if(type == "共识度"){
                 this.accountType = 5
             }else if(type == "fil"){
                 this.accountType = 6

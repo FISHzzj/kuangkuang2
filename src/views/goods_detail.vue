@@ -25,7 +25,7 @@
                         <p>{{rand_num}}人得奖励</p>
                     </div>
                 </div>
-                <div class="right">第630团</div>
+                <div class="right" v-if="teamTotal">第{{teamTotal}}团</div>
             </div>
             <div class="store_name flex ali_center flex_between">
                 <div class="left line2">{{title}}</div>
@@ -114,6 +114,7 @@ export default {
             teamid: "",
             notNum: "",
             total: "",
+            teamTotal:"",
         
         };
     },

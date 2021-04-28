@@ -10,10 +10,11 @@
         <div class="userInfo flex ali_center">
             <img @click="$router.push('/setting')" :src="src" alt="" />
             <div class="right">
-                <div class="nickname">{{nickname}}</div>
-                <div class="mobile">{{mobile}}</div>
-                <div class="mobile" v-if="acce_type != 0 ">{{acce_type == 0 ? '普通':'承兑商'}}</div>
-                <div class="mobile" v-if="mine_status != 0 ">{{mine_status == 0 ? '普通':'有效旷工'}}</div>
+                <div class="nickname">昵称：{{nickname}}</div>
+                <!-- <div class="mobile">手机号：{{mobile}}</div> -->
+                <div class="mobile">ID：{{id}}</div>
+                <div class="chengduishang" v-if="acce_type != 0 ">身份：{{acce_type == 0 ? '普通':'承兑商'}}</div>
+                <div class="mobile" v-if="mine_status != 0 ">身份：{{mine_status == 0 ? '普通':'有效旷工'}}</div>
                 <!-- <div class="mobile">{{acce_type == 0 ? '普通':'承兑商'}}</div> -->
             </div>
             <div class="mini">
@@ -190,7 +191,8 @@ export default {
             src: "",
             mobile: "",
             credit2: "",
-            mini: '签到'
+            mini: '签到',
+            id:"",
 
         };
     },
@@ -219,7 +221,9 @@ export default {
             this.credit2 = res.credit2
             this.acce_type = res.acce_type
             this.mine_status = res.mine_status
+            this.id = res.id
             let signType = res.signType
+            
             if(signType == 0){
                 this.mini = '未签到'
             }else{
@@ -268,10 +272,24 @@ export default {
                 color: #999;
                 font-size: 3.2vw;
                 margin-top: 1.5vw;
+                white-space: nowrap;
             }
+            .chengduishang{
+                color: #999;
+                font-size: 3.2vw;
+                // margin-top: 1.5vw;
+                white-space: nowrap;
+                position: absolute;
+                top: 19%;
+                right: 45px;
+
+            } 
         }
         .mini{
-            margin-left: 40%;
+            margin-left: 25%;
+            position: absolute;
+            right: 10%;
+            top: 12%;
         }
     }
     .nav {

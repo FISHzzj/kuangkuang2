@@ -93,7 +93,7 @@ export default {
     },
     userInfo(data) {
         if ( mistake(data) ) return false
-        let {avatar, nickname, mobile, sf_type, credit2, acce_type, mine_status, signType}  = data.result.info
+        let {avatar, nickname, mobile, sf_type, credit2, acce_type, mine_status, signType, id}  = data.result.info
         return {
             avatar,
             nickname,
@@ -102,7 +102,8 @@ export default {
             credit2,
             acce_type,
             mine_status,
-            signType
+            signType,
+            id
          
         }
     },
