@@ -81,6 +81,8 @@ export default {
     userteamList: `${common}do=mobile&r=user.teamList`, //签到记录
     useracce: `${common}do=mobile&r=user.acce`, //获取要打款的账户
     useraccegetFc: `${common}do=mobile&r=user.acce.getFc`, //确认打款
+    userfeedbackfeeklist: `${common}do=mobile&r=user.feedback.feeklist`, //反馈记录
+
     
     
     
