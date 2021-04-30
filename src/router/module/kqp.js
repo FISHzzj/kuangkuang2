@@ -148,6 +148,16 @@ export default [
             index: 1,
             mustLogin: true,//
         }
+    },
+    {
+        path: '/feeklist', // 反馈记录
+        name: 'feeklist',
+        component: () => import("@/views/feeklist.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
     }
 
 ]

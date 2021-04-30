@@ -682,6 +682,13 @@ export default {
             msg: message
         }
     },
+    userfeedbackfeeklist(data){
+        if ( mistake(data) ) return false
+        let {list} = data.result
+        return{
+            list
+        }
+    },
     
 
 

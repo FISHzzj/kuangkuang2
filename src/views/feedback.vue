@@ -3,6 +3,7 @@
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
             <p>意见反馈</p>
+            <span @click="$router.push('/feeklist')"> 反馈记录</span>
         </div>
         <div class="title flex ali_center flex_between">
             <div class="left">反馈建议</div>
@@ -88,6 +89,16 @@ export default {
             line-height: 12vw;
             font-size: 4vw;
             text-align: center;
+        }
+        span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 4vw;
+            font-size: 3.47vw;
+            margin: auto 0;
+            color: #999;
+            line-height: 12vw;
         }
     }
     .title {

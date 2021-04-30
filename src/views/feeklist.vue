@@ -1,8 +1,8 @@
 <template>
-    <div class="cdslist">
+    <div class="feeklist">
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
-            <p>签到记录</p>
+            <p>反馈记录</p>
         </div>
         <!-- <div class="nav flex ali_center">
             <div class="item"   v-for="(item, index) in navlist" :key="index">
@@ -22,15 +22,15 @@
                 v-for="(item,index) in list" :key="index" >
                     <div class="top flex ali_center flex_between">
                         <div class="time">{{item.createtime}}</div>
-                        <div class="status">签到</div>
+                        <div class="status">反馈</div>
                     </div>
                     <div class="bottom flex ali_center">
                         <div class="left">
-                            <div class="type">共识度</div>
-                            
+                            <div class="type">{{item.mobile}}</div>
+                             <div class="num">{{item.content}}</div>
                         </div>
                         <div class="right">
-                            <div class="num">+{{item.sum}}</div>
+                            <!-- <div class="num">+{{item.sum}}</div> -->
                             <!-- <div class="flex item1 flex_between ali_center">
                                 <span>代理ID</span>
                                 <p>3208897</p>
@@ -50,7 +50,7 @@
 </template>
 <script>
 export default {
-    name: "record",
+    name: "feeklist",
     data() {
         return {
             title: '',
@@ -108,7 +108,7 @@ export default {
         },
         async logs() {
    
-            let res = await $ajax('signsignList', {
+            let res = await $ajax('userfeedbackfeeklist', {
                 page: this.page
             })  //签到
             if(!res) return false
@@ -145,7 +145,7 @@ export default {
 * {
     box-sizing: border-box;
 }
-.cdslist {
+.feeklist {
     background: #f7f7f7 !important;
     .header {
         width: 100%;
@@ -216,7 +216,7 @@ export default {
             .bottom {
                 padding: 6vw 10px;
                 .left {
-                    width: 60%;
+                    width: 100%;
                     .type {
                         font-size: 4.2vw;
                     }
