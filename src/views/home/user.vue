@@ -14,7 +14,7 @@
                 <!-- <div class="mobile">手机号：{{mobile}}</div> -->
                 <div class="mobile">ID：{{id}}</div>
                 <div class="chengduishang" v-if="acce_type != 0 ">身份：{{acce_type == 0 ? '普通':'承兑商'}}</div>
-                <div class="mobile" v-if="mine_status != 0 ">身份：{{mine_status == 0 ? '普通':'有效旷工'}}</div>
+                <div class="mobile" v-if="mine_status != 0 ">身份：{{mine_status == 0 ? '普通':'有效矿工'}}</div>
                 <!-- <div class="mobile">{{acce_type == 0 ? '普通':'承兑商'}}</div> -->
             </div>
             <div class="mini">
@@ -24,7 +24,7 @@
         <div class="nav flex ali_center flex_between">
             <div class="item" @click="$router.push('/myOrder')">
                 <img src="@/assets/images/icon/dingdan.png" alt="" />
-                <p class="type">我的订单</p>
+                <p class="type">我的矿机</p>
             </div>
             <div class="item" @click="$router.push('/wollet')">
                 <img src="@/assets/images/icon/qianbao.png" alt="" />
@@ -193,6 +193,8 @@ export default {
             credit2: "",
             mini: '签到',
             id:"",
+            acce_type: "",
+            mine_status: "",
 
         };
     },
@@ -216,6 +218,7 @@ export default {
                 requstType: "info"
             })
             if(!res) return false
+            // console.log(res)
             this.src = res.avatar
             this.nickname = res.nickname
             this.mobile = res.mobile

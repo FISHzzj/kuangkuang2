@@ -26,7 +26,7 @@
         <div class="footer">
             <div class="tips flex ali_center">
                 <p>继续登录即代表同意</p>
-                <span @click="news_detail">《哈希矿场用户协议》</span>
+                <span @click="news_detail">《FIC矿场用户协议》</span>
             </div>
         </div>
         <Area :showArea="showArea" @change="change"></Area>

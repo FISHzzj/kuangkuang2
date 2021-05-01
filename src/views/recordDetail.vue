@@ -9,8 +9,8 @@
             <img src="@/assets/images/icon/jyjl.png" alt="" />
             <div class="status success">{{statusText}}</div>
             <!-- <div class="status fail">充值失败</div> -->
-            <div class="tips">{{statust}}失败，请核实充值信息后再次提交充值，如有疑问请联系哈希矿场客服</div>
-            <div class="tips">资金预估在1小时内到达帐户，非工作时间，到账时间可能会有延迟，如有疑问请联系哈希矿场平台客服</div>
+            <div class="tips">{{statust}}失败，请核实充值信息后再次提交充值，如有疑问请联系FIC矿场客服</div>
+            <div class="tips">资金预估在1小时内到达帐户，非工作时间，到账时间可能会有延迟，如有疑问请联系FIC矿场平台客服</div>
         </div>
         <div class="content">
             <div class="item flex ali_center flex_between">

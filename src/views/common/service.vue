@@ -9,7 +9,7 @@
                 <img :src="wechat_img" alt="" />
             </div>
             <div class="title">
-                添加哈希矿场微信客服:{{wechat_name}}
+                添加FIC矿场微信客服:{{wechat_name}}
             </div>
             <div class="title1">
                 如有疑问,请扫描添加客服微信随时咨询，谢谢！

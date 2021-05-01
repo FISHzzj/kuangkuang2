@@ -25,7 +25,7 @@
                     </div>
                     <div class="second">
                         <div class="type">预计日收益</div>
-                        <div class="num">{{yield}} {{unit}}/天</div>
+                        <div class="num">{{yield}} FIL/天</div>
                         <!-- <div class="num1">≈{{cny}}CNY/台</div> -->
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     </tr> -->
                     <tr>
                         <td>预计产出</td>
-                        <td colspan="3">{{yield}} {{unit}}/天</td>
+                        <td colspan="3">{{yield}} FIL/天</td>
          
                     </tr>
                     <tr>

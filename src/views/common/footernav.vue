@@ -22,7 +22,7 @@ export default {
                     url: "/kqp_index"
                 },
                 {
-                    name: "产品",
+                    name: "矿机",
                     img:  require('@/assets/images/home/laba4_1.jpg'),
                     img_sel:  require('@/assets/images/home/laba_4.jpg'),
                     url: "/products"

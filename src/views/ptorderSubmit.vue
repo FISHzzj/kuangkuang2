@@ -95,7 +95,7 @@ export default {
             }).then(async ()=>{
                 let res = await $ajax('grouporderpay', {id: this.id})
                 if(!res) return false 
-                Toast(res)
+                Toast(res.msg)
                 this.$router.go(-1)
             }).catch(() => {
                 // on cancel

@@ -2,7 +2,7 @@
     <div class="myOrder">
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
-            <p>我的订单</p>
+            <p>我的矿机</p>
         </div>
         <div class="list" v-for="item in list" :key="item.id">
             <div class="item flex" @click="$router.push({name: 'orderlist', query:{id: `${item.id}`} })">
