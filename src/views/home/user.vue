@@ -32,7 +32,7 @@
             </div>
             <div class="item" @click="$router.push('/poster')">
                 <img src="@/assets/images/icon/jia.png" alt="" />
-                <p class="type">邀请好友</p>
+                <p class="type">邀请矿工</p>
             </div>
         </div>
        <!-- 公告 -->
@@ -105,21 +105,21 @@
             <div @click="$router.push('/receiveSet')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/shoufukuan.png" alt="" />
-                    <span>收/付款设置</span>
+                    <span>提币地址设置</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>
             <div @click="$router.push('/myteam')" class="item flex ali_center flex_between" >
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/daili.png" alt="" />
-                    <span>我的团队</span>
+                    <span>旗下矿工</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>
             <div @click="$router.push('/pinorder')" class="item flex ali_center flex_between" >
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/daili.png" alt="" />
-                    <span>拼团订单</span>
+                    <span>共识区订单</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>

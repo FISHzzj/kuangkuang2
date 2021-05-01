@@ -2,7 +2,7 @@
     <div class="pinorder">
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
-            <p>拼团订单</p>
+            <p>共识区订单</p>
         </div>
         <div class="nav flex ali_center flex_around">
             <div class="item" :class="{on:status == 0}" @click="changenav(0)">全部</div>

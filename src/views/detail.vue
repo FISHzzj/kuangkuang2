@@ -212,7 +212,7 @@ export default {
                 title: this.title,
                 suanli: this.t_num,
                 zupin: this.isstatustime == 1 ? this.day : '永久',
-                catetype: this.catetype,
+                unit: this.unit,
 
             }
             if(this.catetype == 'BTC'){

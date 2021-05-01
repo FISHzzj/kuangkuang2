@@ -2,7 +2,7 @@
     <div class="orderDetail">
         <div class="header flex flex_between ali_center">
             <van-icon @click="$router.go(-1)" name="arrow-left" color="#000" size="20" />
-            <p>收/付款设置</p>
+            <p>提币地址设置</p>
             <van-icon name="plus" @click="showList = true" color="blue" />
         </div>
         <div style="height:15vw"></div>
