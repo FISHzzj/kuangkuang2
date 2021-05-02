@@ -27,7 +27,7 @@
                     <div class="bottom flex ali_center">
                         <div class="left">
                             <div class="type">提问：{{item.content}}</div>
-                             <div class="num">回复：{{item.replay || '暂无回复'}}</div>
+                             <div class="num">回复：{{item.reply || '暂无回复'}}</div>
                         </div>
                         <!-- <div class="right"> -->
                             <!-- <div class="num">+{{item.sum}}</div> -->
