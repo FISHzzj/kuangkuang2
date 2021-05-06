@@ -3,7 +3,7 @@
         <div class="header">
             <van-icon @click="leave" name="arrow-left" color="#000" size="20" />
             <p>汇款详情</p>
-            <span @click="cancle">取消订单</span>
+            <!-- <span @click="cancle">取消订单</span> -->
         </div>
         <div style="height:12vw"></div>
         <div class="top">

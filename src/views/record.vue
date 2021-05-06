@@ -16,15 +16,16 @@
                 :finished-text="'我是有底线的'"
                 @load="logs"
                 >
-                <router-link 
+                <div
                     class="item" 
-                    v-for="(item,index) in list" :key="index" :to="{name: 'huiMoney', query:{id:`${item.id}`}}"  tag="div">
+                    v-for="(item,index) in list" :key="index"   >
                     <div class="top flex ali_center flex_between">
                         <div class="time">{{item.createtime}}</div>
                         <div><van-icon @click="replay(item.id)" name="replay" size="20" /></div>
                         <div class="status">{{item.statusText}}</div>
                     </div>
-                    <div class="bottom flex ali_center">
+                    <router-link :to="{name: 'huiMoney', query:{id:`${item.id}`}}"
+                        class="bottom flex ali_center" tag="div">
                         <div class="left">
                             <div class="type">{{item.rechargeText}}</div>
                             <div class="num">+{{item.money}}</div>
@@ -40,8 +41,8 @@
                             </div>
                         </div>
                         
-                    </div>
-                </router-link>
+                    </router-link>
+                </div>
               
             </van-list>
            
