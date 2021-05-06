@@ -82,6 +82,11 @@ export default {
     useracce: `${common}do=mobile&r=user.acce`, //获取要打款的账户
     useraccegetFc: `${common}do=mobile&r=user.acce.getFc`, //确认打款
     userfeedbackfeeklist: `${common}do=mobile&r=user.feedback.feeklist`, //反馈记录
+    userrechargevoucherFC: `${common}do=mobile&r=user.recharge.voucherFC`, //FC上传凭证
+    userrechargevoucherSet: `${common}do=mobile&r=user.recharge.voucherSet`, //FC上传凭证提交
+
+    
+
 
     
     

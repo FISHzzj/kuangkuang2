@@ -10,7 +10,7 @@
             <div class="time">请在30分钟内联系承兑商完成转账</div>
             <!-- <div class="tips">建议使用本人名下的银行卡进行转账</div> -->
         </div>
-        <div class="order_info flex ali_center">
+        <!-- <div class="order_info flex ali_center">
             <div class="left">
                 <div class="type">订单总金额</div>
                 <div class="num">￥{{money}}</div>
@@ -25,34 +25,41 @@
                     <p>{{num}}FC</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="otherInfo">
             <div class="title flex ali_center">
                 <img src="@/assets/images/icon/jyjl.png" alt="" />
-                <span>对公账户</span>
+                <span>承兑商</span>
+            </div>
+            <div class="item flex ali_center flex_between">
+                <div class="left">充值金额</div>
+                <div class="right flex ali_center">
+                    <span class="infos">{{money}}</span>
+                    <span class="copy" :data-clipboard-text="acce_id">复制</span>
+                </div>
             </div>
             <div class="item flex ali_center flex_between">
                 <div class="left">承兑商ID</div>
                 <div class="right flex ali_center">
-                    <span class="infos">{{realname}}</span>
-                    <span class="copy" :data-clipboard-text="realname">复制</span>
+                    <span class="infos">{{acce_id}}</span>
+                    <span class="copy" :data-clipboard-text="acce_id">复制</span>
                 </div>
             </div>
             <div class="item flex ali_center flex_between">
                 <div class="left">承兑商手机号码</div>
                 <div class="right flex ali_center">
-                    <span class="infos">{{bankcard}}</span>
-                    <span class="copy" :data-clipboard-text="bankcard">复制</span>
+                    <span class="infos">{{acce_mobile}}</span>
+                    <span class="copy" :data-clipboard-text="acce_mobile">复制</span>
+                </div>
+            </div>
+            <div class="item flex ali_center flex_between" v-if="acce_img">
+                <div class="left">承兑商收款码</div>
+                <div class="right flex ali_center">
+                    <span class="infos" @click="showPopup"><img :src="acce_img" alt=""></span>
+                    <!-- <span class="copy" :data-clipboard-text="bankname">复制</span> -->
                 </div>
             </div>
             <!-- <div class="item flex ali_center flex_between">
-                <div class="left">收款方银行</div>
-                <div class="right flex ali_center">
-                    <span class="infos">{{bankname}}</span>
-                    <span class="copy" :data-clipboard-text="bankname">复制</span>
-                </div>
-            </div>
-            <div class="item flex ali_center flex_between">
                 <div class="left">订单号</div>
                 <div class="right flex ali_center">
                     <span class="infos">{{ordersn}}</span>
@@ -60,23 +67,24 @@
                 </div>
             </div> -->
         </div>
-        <!-- <div class="mineInfo">
-            <div class="num flex flex_between ali_center">
+        <div class="mineInfo">
+            <!-- <div class="num flex flex_between ali_center">
                 <div class="title">转款卡主姓名</div>
                 <input v-model="zhuanname" type="text" placeholder="请输入卡主姓名" />
-            </div>
+            </div> -->
             <div  class="img flex flex_between ali_center">
                 <div class="title">完成转账截图</div>
                 <van-uploader :after-read="afterRead" v-if="!baseimg" />
                 <img :src="baseimg" alt="" v-if="baseimg" >
             </div>
-        </div> -->
+        </div>
         <!-- <div class="tip">
             <div class="title">温馨提示:</div>
             <div class="red">1.请在转账时备注矿金所张虎手机号码(请勿备注含矿机、数字货币、比特比、以太坊或者英文BTC、ETH等自言),如有敏感字眼的备注将不做充值处理，七天后所转账的金额安原路返还</div>
             <div class="grey">2.如有任何疑问请联系矿金所官方客服(请在工作日9：00-18：00之间完成充值)</div>
             <div class="grey">1.仅支持储蓄卡充值</div>
         </div> -->
+        <van-popup v-model="show"><img :src="acce_img" alt="" style="width:100%;height:100%;"></van-popup>
         <div class="submit" :class="{on: money}" @click="submit">我已付款成功</div>
     </div>
 </template>
@@ -99,7 +107,12 @@ export default {
             money: "",
             baseimg: "",
             accountType: "cny",
-            id:""
+            id:"",
+            money:"", 
+            acce_mobile:"", 
+            acce_img:"", 
+            acce_id:"",
+            show:false,
 
 
         };
@@ -110,30 +123,16 @@ export default {
     },
     methods: {
         async getData() {
-            this.num =  this.$route.query.num
-            this.money = this.$route.query.money
+            // this.num =  this.$route.query.num
+            // this.money = this.$route.query.money
             this.id = this.$route.query.id
             if(this.id){
-                let res = await $ajax('rechargegetCre', {lid: this.id})
+                let res = await $ajax('userrechargevoucherFC', {lid: this.id})
                 if(!res) return false
                 // this.money = res.money
-                let log = res.log
-                let sysWallet = res.sysWallet
-                var newobj = Object.assign({}, log, sysWallet)
-                console.log(newobj)
-                Object.keys(newobj).forEach((key) => {
-                    this[key] = newobj[key]
-                })
-            }else {
-                let res = await $ajax('rechargegetCre', {money: this.num})
-                if(!res) return false
-                // this.money = res.money
-                let log = res.log
-                let sysWallet = res.sysWallet
-                var newobj = Object.assign({}, log, sysWallet)
-                console.log(newobj)
-                Object.keys(newobj).forEach((key) => {
-                    this[key] = newobj[key]
+       
+                Object.keys(res).forEach((key) => {
+                    this[key] = res[key]
                 })
             }
             
@@ -188,7 +187,7 @@ export default {
             });
         },
         async dontPay(){
-            let res = await $ajax('userrechargedontPay', {
+            let res = await $ajax('userrechargevoucherSet', {
                 lid: this.id,
             })
             if(!res) return false
@@ -197,22 +196,25 @@ export default {
             this.$router.go(-1)
         },
         async submit() {
-            if(!this.zhuanname) return Toast("请输入卡主姓名!")
+            // if(!this.zhuanname) return Toast("请输入卡主姓名!")
             if(!this.baseimg) return Toast("请上传转账截图!")
-            let res = await $ajax('userrechargepays', {
-                getType: 1,
+            let res = await $ajax('userrechargevoucherSet', {
+                // getType: 1,
                 image: this.baseimg,
-                money: this.money,
-                realname: this.zhuanname,
-                accountType: '1',
+                // money: this.money,
+                // realname: this.zhuanname,
+                // accountType: '1',
                 lid: this.id,
             })
             if(!res) return false
             console.log(res)
             Toast(res.msg)
-             this.dontPay()
-            // this.$router.go(-1)
-        }
+            //  this.dontPay()
+            this.$router.go(-1)
+        },
+        showPopup() {
+            this.show = true;
+        },
     }
 };
 </script>

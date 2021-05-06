@@ -5,14 +5,14 @@
             <p>充值</p>
             <span @click="gopage('/record/recharge')">充值记录</span>
         </div>
-        <div class="nav flex ali_center flex_between">
+        <!-- <div class="nav flex ali_center flex_between">
             <div class="item on">
                 FC充值
             </div>
             <div class="item" @click="gopage('/exchange/USDT/转入')">
                 USDT充值
             </div>
-        </div>
+        </div> -->
         <div class="money">
             <div class="type">FC</div>
             <div class="num">{{money}}</div>

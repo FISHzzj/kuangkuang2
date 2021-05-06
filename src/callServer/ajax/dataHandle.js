@@ -82,7 +82,8 @@ export default {
         if ( mistake(data) ) return false
         return {
             msg: data.result.result,
-            avatar: data.result.avatar
+            avatar: data.result.avatar,
+            image:data.result.image
         }
     },
     logout(data) {
@@ -93,7 +94,7 @@ export default {
     },
     userInfo(data) {
         if ( mistake(data) ) return false
-        let {avatar, nickname, mobile, sf_type, credit2, acce_type, mine_status, signType, id}  = data.result.info
+        let {avatar, nickname, mobile, sf_type, credit2, acce_type, mine_status, signType, id, image}  = data.result.info
         return {
             avatar,
             nickname,
@@ -103,7 +104,8 @@ export default {
             acce_type,
             mine_status,
             signType,
-            id
+            id,
+            image,
          
         }
     },
@@ -689,7 +691,23 @@ export default {
             list
         }
     },
-    
+    userrechargevoucherFC(data){
+        if ( mistake(data) ) return false
+        let {money, acce_mobile, acce_img, acce_id} = data.result.info
+        return{
+            money, 
+            acce_mobile, 
+            acce_img, 
+            acce_id
+        }
+    },
+    userrechargevoucherSet(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
 
 
 

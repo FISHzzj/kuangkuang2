@@ -15,6 +15,16 @@
                     <van-icon name="arrow" />
                 </div>
             </div>
+            <div class="item avatar flex ali_center flex_between" v-if="acce_type == 1">
+                <div class="label">收款码</div>
+                <div class="right flex ali_center">
+                    <div class="pic_wrapper">
+                        <van-uploader max-count="1" preview-size="50" :after-read="afterReadimage" />
+                        <img class="avatar_1" :src="image" alt="" v-if="image" />
+                    </div>
+                    <van-icon name="arrow" />
+                </div>
+            </div>
             <div @click="openNickname" class="item nickname flex ali_center flex_between">
                 <div class="label">昵称</div>
                 <div class="right flex ali_center">
@@ -62,6 +72,7 @@
     </div>
 </template>
 <script>
+import { Toast } from 'vant';
 import changeName from './common/changeName';
 export default {
     name: "setting",
@@ -76,6 +87,8 @@ export default {
             src: require("@/assets/images/icon/jyjl.png"),
             mobile: "",
             sf_type: "",
+            image:"",
+            acce_type: '',
         };
     },
     mounted() {
@@ -99,6 +112,8 @@ export default {
             this.nickname = res.nickname
             this.mobile = res.mobile
             this.sf_type = res.sf_type
+            this.acce_type = res.acce_type
+            this.image = res.image
 
         },
         async clearname(e) {
@@ -120,6 +135,24 @@ export default {
             this.src = res.avatar
             Toast(res.msg)
 
+        },
+         async uploadimg(e) {
+            // this.nickname = e;
+            if(!this.image) return Toast('请上传收款码')
+            let res = await $ajax('userSet', {
+                image: this.image
+            })
+            if(!res) return false
+            Toast(res.msg)
+        },
+        async afterReadimage(s){
+            console.log(s);
+            let img = s.content
+            let res = await $ajax('userSet', {image: img})
+            if(!res) return false
+            console.log(res)
+            this.image = res.image
+            // this.uploadimg()
         },
         closeName() {
             this.showNickname = false;
