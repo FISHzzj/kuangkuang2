@@ -2,7 +2,7 @@
 	<div id="login">
 		<div>
 			<p>嗨！矿友们好</p>
-			<p style="color:#999;">{{'欢迎使用哈希矿场'}}</p>
+			<p style="color:#999;">{{'欢迎使用FIC矿场'}}</p>
 		</div>
 		<div>
 			<form>

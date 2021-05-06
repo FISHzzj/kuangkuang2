@@ -17,6 +17,11 @@
             <div class="type">FC</div>
             <div class="num">{{money}}</div>
         </div>
+        <div class="buy_num" style="text-align:left;color:#333;padding-left:67%;">
+            <div class="title" style="line-height:20px">1FC=7元人民币</div>
+            <div class="title" style="line-height:15px">1FC=1FIC</div>
+            
+        </div>
         <div class="buy_num">
             <div class="title">充值FC</div>
             <div class="input flex ali_center flex_between">
@@ -52,7 +57,7 @@
         <div class="tip">
             <div class="title">温馨提示:</div>
             <div class="red">1.点击充值，填入需充值金额，点击提交，显示充值订单，承兑商ID，承兑商手机号码，会员可根据承兑商的电话号码，联系承兑商进行充值，充值订单在承兑商账户显示，会员联系承兑商，线下转款之后，承兑商可在线上确认订单充值，自动划分余额到会员账户上</div>
-            <!-- <div class="grey">2.如有任何疑问请联系哈希矿场官方客服(请在工作日9：00-18：00之间完成充值)</div>
+            <!-- <div class="grey">2.如有任何疑问请联系FIC矿场官方客服(请在工作日9：00-18：00之间完成充值)</div>
             <div class="grey">3.仅支持储蓄卡充值</div> -->
         </div>
         <div class="submit" @click="recharge">立即充值</div>

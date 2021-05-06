@@ -23,7 +23,7 @@
         </div>
         <div class="list">
             <div class="title flex ali_center flex_between">
-                <div class="left">精选拼团</div>
+                <div class="left">更多共识区</div>
                 <div @click="$router.push('/kqp_goods_list/1')" class="right flex ali_center">
                     <span>更多</span>
                     <van-icon name="arrow"></van-icon>

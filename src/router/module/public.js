@@ -43,6 +43,16 @@ export default [
         }
     },
     {
+        path: '/content1', // 文章详情
+        name: 'content1',
+        component: () => import("@/views/content1.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: false,//
+        }
+    },
+    {
         path: '/setting', // 账户设置
         name: 'setting',
         component: () => import("@/views/setting.vue"),

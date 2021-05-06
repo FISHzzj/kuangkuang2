@@ -5,7 +5,7 @@
         </div>
         <div class="title">
             <div class="first">嗨!矿友们好</div>
-            <div class="second">欢迎使用哈希矿场</div>
+            <div class="second">欢迎使用FIC矿场</div>
         </div>
         <div class="content">
             <div class="phone">
@@ -17,7 +17,7 @@
                 <input v-else type="password" v-model="inputMsg.pwd" placeholder="请输入密码">
                 <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
                 <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i>
-                <van-icon v-if="inputMsg.pwd" @click="inputMsg.mobile = ''" name="cross" color="#fff" size="10" />
+                <van-icon v-if="inputMsg.pwd" @click="inputMsg.pwd = ''" name="cross" color="#fff" size="10" />
             </div>
         </div>
         <div class="btn submit" @click="login">
@@ -34,7 +34,7 @@
             </div>
             <div class="tips flex ali_center">
                 <p>继续登录即代表同意</p>
-                <span @click="news_detail">《哈希矿场用户协议》</span>
+                <span @click="news_detail">《FIC矿场用户协议》</span>
             </div>
         </div>
     </div>
@@ -134,7 +134,7 @@ export default {
         },
         news_detail() {
             this.$router.push({
-                path: "/forget"
+                path: "/content1"
             });
         },
         goback() {

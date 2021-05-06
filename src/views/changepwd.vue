@@ -6,7 +6,7 @@
         </div>
         <!-- <div class="title">
             <div class="first">嗨!矿友们好</div>
-            <div class="second">欢迎使用哈希矿场</div>
+            <div class="second">欢迎使用FIC矿场</div>
         </div> -->
         <div class="content">
             <!-- <div class="phone">
@@ -42,7 +42,7 @@
             </div>
             <div class="tips flex ali_center">
                 <p>继续登录即代表同意</p>
-                <span @click="news_detail">《哈希矿场用户协议》</span>
+                <span @click="news_detail">《FIC矿场用户协议》</span>
             </div>
         </div> -->
     </div>

@@ -26,20 +26,20 @@
                     </div>
                     <div class="bottom flex ali_center">
                         <div class="left">
-                            <div class="type">{{item.mobile}}</div>
-                             <div class="num">{{item.content}}</div>
+                            <div class="type">提问：{{item.content}}</div>
+                             <div class="num">回复：{{item.reply || '暂无回复'}}</div>
                         </div>
-                        <div class="right">
+                        <!-- <div class="right"> -->
                             <!-- <div class="num">+{{item.sum}}</div> -->
                             <!-- <div class="flex item1 flex_between ali_center">
-                                <span>代理ID</span>
-                                <p>3208897</p>
-                            </div>
-                            <div class="flex flex_between ali_center">
+                                <span>回复：</span>
+                                <p>{{item.replay || '暂无回复'}}</p>
+                            </div> -->
+                            <!-- <div class="flex flex_between ali_center">
                                 <span>承兑商</span>
                                 <p>19170866386</p>
                             </div> -->
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div >
               
@@ -221,7 +221,7 @@ export default {
                         font-size: 4.2vw;
                     }
                     .num {
-                        font-size: 6vw;
+                        font-size: 4vw;
                         font-weight: 600;
                         
                     }

@@ -16,19 +16,19 @@ export default {
         return {
             list: [
                 {
-                    name: "拼团",
+                    name: "共识区",
                     img:  require('@/assets/images/home/laba3_1.jpg'),
                     img_sel:  require('@/assets/images/home/laba3.jpg'),
                     url: "/kqp_index"
                 },
                 {
-                    name: "产品",
+                    name: "矿机",
                     img:  require('@/assets/images/home/laba4_1.jpg'),
                     img_sel:  require('@/assets/images/home/laba_4.jpg'),
                     url: "/products"
                 },
                 {
-                    name: "我的",
+                    name: "FIL财富广场",
                     img:  require('@/assets/images/home/laba5_1.jpg'),
                     img_sel:  require('@/assets/images/home/laba5.jpg'),
                     url: "/user"

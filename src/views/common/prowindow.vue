@@ -28,7 +28,7 @@
                 </a>
             </div> -->
             <div class="sub_btn flex ali_center flex_between">
-                <div class="left">总价<span>{{all_money}}{{productInfo.catetype}}</span></div>
+                <div class="left">总价<span>{{all_money}}{{productInfo.unit}}</span></div>
                 <div class="right" :class="{on: status}" @click="submit">提交订单</div>
             </div>
         </div>

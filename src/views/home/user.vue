@@ -14,7 +14,7 @@
                 <!-- <div class="mobile">手机号：{{mobile}}</div> -->
                 <div class="mobile">ID：{{id}}</div>
                 <div class="chengduishang" v-if="acce_type != 0 ">身份：{{acce_type == 0 ? '普通':'承兑商'}}</div>
-                <div class="mobile" v-if="mine_status != 0 ">身份：{{mine_status == 0 ? '普通':'有效旷工'}}</div>
+                <div class="mobile" v-if="mine_status != 0 ">身份：{{mine_status == 0 ? '普通':'有效矿工'}}</div>
                 <!-- <div class="mobile">{{acce_type == 0 ? '普通':'承兑商'}}</div> -->
             </div>
             <div class="mini">
@@ -24,7 +24,7 @@
         <div class="nav flex ali_center flex_between">
             <div class="item" @click="$router.push('/myOrder')">
                 <img src="@/assets/images/icon/dingdan.png" alt="" />
-                <p class="type">我的订单</p>
+                <p class="type">我的矿机</p>
             </div>
             <div class="item" @click="$router.push('/wollet')">
                 <img src="@/assets/images/icon/qianbao.png" alt="" />
@@ -32,7 +32,7 @@
             </div>
             <div class="item" @click="$router.push('/poster')">
                 <img src="@/assets/images/icon/jia.png" alt="" />
-                <p class="type">邀请好友</p>
+                <p class="type">邀请矿工</p>
             </div>
         </div>
        <!-- 公告 -->
@@ -105,21 +105,21 @@
             <div @click="$router.push('/receiveSet')" class="item flex ali_center flex_between">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/shoufukuan.png" alt="" />
-                    <span>收/付款设置</span>
+                    <span>提币地址设置</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>
             <div @click="$router.push('/myteam')" class="item flex ali_center flex_between" >
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/daili.png" alt="" />
-                    <span>我的团队</span>
+                    <span>旗下矿工</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>
             <div @click="$router.push('/pinorder')" class="item flex ali_center flex_between" >
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/daili.png" alt="" />
-                    <span>拼团订单</span>
+                    <span>共识区订单</span>
                 </div>
                 <van-icon name="arrow" color="#ccc" />
             </div>
@@ -193,6 +193,8 @@ export default {
             credit2: "",
             mini: '签到',
             id:"",
+            acce_type: "",
+            mine_status: "",
 
         };
     },
@@ -216,6 +218,7 @@ export default {
                 requstType: "info"
             })
             if(!res) return false
+            // console.log(res)
             this.src = res.avatar
             this.nickname = res.nickname
             this.mobile = res.mobile

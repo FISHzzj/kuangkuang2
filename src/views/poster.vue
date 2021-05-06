@@ -2,7 +2,7 @@
     <div class="poster">
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
-            <p>邀请好友</p>
+            <p>邀请矿工</p>
         </div>
         <div style="height:12vw"></div>
         <div class="code">

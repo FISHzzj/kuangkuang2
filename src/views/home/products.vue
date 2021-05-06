@@ -39,10 +39,10 @@
                             <div class="name line">{{item.title}}</div>
                             <div class="first second">  运行周期:{{item.statustimeend}}天  |  等级:{{item.levelname}}T</div> 
                             
-                            <div class="first">预计日产出:{{item.yield}}{{item.unit}}/天</div>
-                            <div class="first">≈{{item.marketprice}} {{item.unit}}/台</div>
+                            <div class="first">预计日产出:{{item.yield}}FIL/天</div>
+                            <!-- <div class="first">≈{{item.marketprice}} {{item.unit}}/台</div> -->
                             <div class="bottom">
-                                <div class="price">{{item.marketprice}}<span>{{item.unit}}</span></div>
+                                <div class="price">{{item.marketprice}}<span>{{item.unit == 'FIL' ? 'FIC' : 'USDT'}}</span></div>
                                 <!-- <div class="price1">≈{{item.usdt}}USDT</div> -->
                             </div>
                         </div>
