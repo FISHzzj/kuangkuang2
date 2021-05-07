@@ -108,16 +108,18 @@ export default {
             let res = await $ajax('userrechargesetFC', {money: num})  //充值
             if(!res) return false
             console.log(res)
-            Toast(res.msg)
+            // Toast(res.msg)
             this.num = ''
-            // this.$router.push({
-            //     name: "huiMoney",
-            //     query: {
-            //         // money: paynum,
-            //         num : num,
-            //         money : this.paynum
-            //     }
-            // })
+            let id = res.id
+            this.$router.push({
+                name: "huiMoney",
+                query: {
+                    id: id
+                    // money: paynum,
+                    // num : num,
+                    // money : this.paynum
+                }
+            })
         }
     }
 };

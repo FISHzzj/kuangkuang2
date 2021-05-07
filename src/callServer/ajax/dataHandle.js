@@ -367,6 +367,7 @@ export default {
     userrechargelogs(data) {
         if ( mistake(data) ) return false
         let {list} = data.result
+        
         return{
             list
         }
@@ -610,9 +611,9 @@ export default {
     },
     userrechargesetFC(data){
         if ( mistake(data) ) return false
-        let {message} = data.result
+        let {id} = data.result
         return {
-            msg: message
+            id
         }
     },
     userrechargerefreshFC(data){
