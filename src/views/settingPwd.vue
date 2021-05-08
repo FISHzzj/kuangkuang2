@@ -106,7 +106,7 @@ export default {
             if (!res) return false
             // 如果爲 非 app 進入, 則跳轉下載頁面, 並終止函數
             if ( sessionStorage.getItem('noApp') ) {
-                window.location.href = 'https://im22.me/Zcak'
+                window.location.href = 'https://downloadpkg.app3c.cn/app/download?path=https://A6175909159315.qiniucdn.apicloud-system.com/7e27d00802ae5269ed90872da573c2b7_d'
                 return false
             }
             // 進行登錄 提示
