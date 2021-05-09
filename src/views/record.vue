@@ -40,7 +40,11 @@
                             </div>
                         </div>
                         
+<<<<<<< HEAD
                     </router-link >
+=======
+                    </router-link>
+>>>>>>> 71d35ea7c164ff942e631c0401364c0bb3bb4b1f
                 </div>
               
             </van-list>
