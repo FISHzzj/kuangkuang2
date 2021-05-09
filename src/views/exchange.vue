@@ -3,7 +3,7 @@
         <div class="header">
             <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
             <p>{{typetype}}</p>
-            <span @click="showService = true">联系客服</span>
+            <!-- <span @click="showService = true">联系客服</span> -->
         </div>
         <div style="height:8vw"></div>
         <div class="content flex ali_center">

@@ -2,10 +2,10 @@
 function mistake (data) {
     // 如果返回的数据, 不是 json
     if ( typeof data !== 'object') {
-        Dialog.alert({
-            title: '服務器錯誤',
-            message: 'server data type not is JSON'
-        })
+        // Dialog.alert({
+        //     title: '服務器錯誤',
+        //     message: 'server data type not is JSON'
+        // })
         return true //發生錯誤
     }
     if (parseInt(data.status) !== 1) {
