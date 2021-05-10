@@ -12,8 +12,8 @@
                 <div class="right">
                     <div class="name">{{item.name}}</div>
                     <div class="flex ali_center">
-                        <p>持有中<span>{{item.get_total}}</span>笔</p>
-                        <p>已到期<span>{{item.not_total}}</span>笔</p>
+                        <p>持有中<span>{{item.get_total}}</span>台</p>
+                        <p>已到期<span>{{item.not_total}}</span>台</p>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@
                 <!-- <div class="mobile">{{acce_type == 0 ? '普通':'承兑商'}}</div> -->
             </div>
             <div class="mini">
-                <!-- <van-button type="primary" size="mini" @click="minihandle">{{mini}}</van-button> -->
+                <van-button type="primary" size="mini" @click="minihandle">{{mini}}</van-button>
             </div>
         </div>
         <div class="nav flex ali_center flex_between">

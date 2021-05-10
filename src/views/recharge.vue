@@ -19,7 +19,7 @@
         </div>
         <div class="buy_num" style="text-align:left;color:#333;padding-left:67%;">
             <div class="title" style="line-height:20px">1FC=7元人民币</div>
-            <div class="title" style="line-height:15px">1FC=1FIC</div>
+            <!-- <div class="title" style="line-height:15px">1FC=1FIC</div> -->
             
         </div>
         <div class="buy_num">

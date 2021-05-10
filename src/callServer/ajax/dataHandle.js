@@ -694,12 +694,13 @@ export default {
     },
     userrechargevoucherFC(data){
         if ( mistake(data) ) return false
-        let {money, acce_mobile, acce_img, acce_id} = data.result.info
+        let {money, acce_mobile, acce_img, acce_id,image} = data.result.info
         return{
             money, 
             acce_mobile, 
             acce_img, 
-            acce_id
+            acce_id,
+            image
         }
     },
     userrechargevoucherSet(data){

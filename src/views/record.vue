@@ -24,7 +24,7 @@
                         <!-- <div><van-icon @click="replay(item.id)" name="replay" size="20" /></div> -->
                         <div class="status">{{item.statusText}}</div>
                     </div>
-                    <router-link  class="bottom flex ali_center" :to="{name: 'huiMoney', query:{id:`${item.id}`, name:'list'}}" tag="div" >
+                    <router-link  class="bottom flex ali_center" :to="{name: 'huiMoney', query:{id:`${item.id}`, qufenname:'list'}}" tag="div" >
                         <div class="left">
                             <div class="type">{{item.rechargeText}}</div>
                             <div class="num">+{{item.money}}</div>
@@ -40,11 +40,7 @@
                             </div>
                         </div>
                         
-<<<<<<< HEAD
                     </router-link >
-=======
-                    </router-link>
->>>>>>> 71d35ea7c164ff942e631c0401364c0bb3bb4b1f
                 </div>
               
             </van-list>

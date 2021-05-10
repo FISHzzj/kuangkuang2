@@ -13,9 +13,9 @@
             <div class="pro_num flex ali_center flex_between">
                 <div class="left">购买台数</div>
                 <div class="num flex ali_center">
-                    <div class="jian" @click="jian">-</div>
-                    <input type="number" @input="input" v-model="num" />
-                    <div @click="add" class="add">+</div>
+                    <!-- <div class="jian" @click="jian">-</div> -->
+                    <input type="number" @input="input" v-model="num" disabled />
+                    <!-- <div @click="add" class="add">+</div> -->
                 </div>
             </div>
             <!-- <div class="freeing flex">
@@ -50,12 +50,12 @@ export default {
     data() {
         return {
             status: "",
-            num: 0,
+            num: 1,
             all_money: "0.00"
         };
     },
     created(){
-        // this.gettotal()
+        this.gettotal()
     },
     methods: {
         async gettotal( ) {

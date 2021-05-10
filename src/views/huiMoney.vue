@@ -56,7 +56,7 @@
             <div class="item flex ali_center flex_between" v-if="acce_img">
                 <div class="left">承兑商收款码</div>
                 <div class="right flex ali_center">
-                    <span class="infos" @click="showPopup"><img :src="acce_img" alt=""></span>
+                    <span class="infos" @click="showPopup(acce_img)"><img :src="acce_img" alt=""></span>
                     <!-- <span class="copy" :data-clipboard-text="bankname">复制</span> -->
                 </div>
             </div>
@@ -73,10 +73,10 @@
                 <div class="title">转款卡主姓名</div>
                 <input v-model="zhuanname" type="text" placeholder="请输入卡主姓名" />
             </div> -->
-            <div  class="img flex flex_between ali_center" v-if="!name">
+            <div  class="img flex flex_between ali_center" >
                 <div class="title">完成转账截图</div>
                 <van-uploader :after-read="afterRead" v-if="!baseimg" />
-                <img :src="baseimg" alt="" v-if="baseimg" >
+                <img @click="showPopup(baseimg)" :src="baseimg" alt="" v-if="baseimg" >
             </div>
         </div>
         <!-- <div class="tip">
@@ -85,7 +85,7 @@
             <div class="grey">2.如有任何疑问请联系矿金所官方客服(请在工作日9：00-18：00之间完成充值)</div>
             <div class="grey">1.仅支持储蓄卡充值</div>
         </div> -->
-        <van-popup v-model="show"><img :src="acce_img" alt="" style="width:100%;height:100%;"></van-popup>
+        <van-popup v-model="show"><img :src="showPopupimg" alt="" style="width:100%;height:100%;"></van-popup>
         <div class="submit" :class="{on: money}" @click="submit" v-if="!name">我已付款成功</div>
     </div>
 </template>
@@ -115,6 +115,8 @@ export default {
             acce_id:"",
             show:false,
             name:"",
+            showPopupimg:"",
+            // image:"",
 
 
         };
@@ -128,7 +130,8 @@ export default {
             // this.num =  this.$route.query.num
             // this.money = this.$route.query.money
             this.id = this.$route.query.id
-            this.name = this.$route.query.name
+            this.name = this.$route.query.qufenname
+            console.log(this.name)
             if(this.id){
                 let res = await $ajax('userrechargevoucherFC', {lid: this.id})
                 if(!res) return false
@@ -137,6 +140,7 @@ export default {
                 Object.keys(res).forEach((key) => {
                     this[key] = res[key]
                 })
+                this.baseimg = res.image
             }
             
         },
@@ -225,8 +229,9 @@ export default {
             
 
         },
-        showPopup() {
+        showPopup(img) {
             this.show = true;
+            this.showPopupimg = img
         },
     }
 };

@@ -19,7 +19,7 @@
                 <div
                 class="item" 
                
-                v-for="(item,index) in list" :key="index" @click="gonext(item.id, item.money, item.realname, item.acce_img)">
+                v-for="(item,index) in list" :key="index" @click="gonext(item.id, item.money, item.realname, item.image)">
                     <div class="top flex ali_center flex_between">
                         <div class="time">{{item.createtime}}</div>
                         <div class="status">{{item.text}}</div>

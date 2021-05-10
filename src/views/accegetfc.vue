@@ -20,7 +20,7 @@
                 <input v-model="address" type="text" placeholder="输入转账地址" />
             </div> -->
             <div class="img flex flex_between ali_center" @click="showPopup">
-                <div class="title">打款凭证</div>
+                <div class="title">支付凭证</div>
                 <!-- <van-uploader :after-read="afterRead" v-if="!baseimg" /> -->
                 <img :src="image" alt=""  >
             </div>
