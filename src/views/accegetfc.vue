@@ -9,21 +9,21 @@
         <div class="pays">
             <div class="num flex flex_between ali_center">
                 <div class="title">金额</div>
-                <input v-model="num" type="text" placeholder="输入金额"  />
+                <input v-model="num" type="text" placeholder="输入金额"  disabled />
             </div>
              <div class="num flex flex_between ali_center">
                 <div class="title">姓名</div>
-                <input v-model="roomid" type="text" placeholder="输入姓名" />
+                <input v-model="roomid" type="text" placeholder="输入姓名" disabled />
             </div>
             <!-- <div class="img flex flex_between ali_center">
                 <div class="title">转账地址</div>
                 <input v-model="address" type="text" placeholder="输入转账地址" />
             </div> -->
-            <!-- <div class="img flex flex_between ali_center">
-                <div class="title">钱包收款码</div>
-                <van-uploader :after-read="afterRead" v-if="!baseimg" />
-                <img :src="baseimg" alt="" v-if="baseimg" >
-            </div> -->
+            <div class="img flex flex_between ali_center" @click="showPopup">
+                <div class="title">支付凭证</div>
+                <!-- <van-uploader :after-read="afterRead" v-if="!baseimg" /> -->
+                <img :src="image" alt=""  >
+            </div>
             
         </div>
         <!-- <div class="tips">
@@ -34,6 +34,7 @@
             <div>4.提币审核会在24小时内完成，具体到账时间会受网络影响，可能有所延迟；</div> -->
             <!-- <div>1.如长时间未到账，请及时联系客服</div>
         </div> -->
+        <van-popup v-model="show"><img :src="image" alt="" style="width:100%;height:100%;"></van-popup>
         <div class="submit" :class="{on: num && roomid}" @click="submit">确认</div>
         
     </div>
@@ -54,6 +55,8 @@ export default {
             num: "",
             roomid:"",
             id: "",
+            image: "",
+            show: false,
           
 
         }
@@ -62,6 +65,7 @@ export default {
         this.id = this.$route.query.id
         this.num = this.$route.query.money
         this.roomid = this.$route.query.name
+        this.image = this.$route.query.image
         //傳遞複製按鈕選擇器, 接受複製插件的 clipboard 實例
         // this.clipboard = copy('.copy')
         // this.getData()
@@ -96,7 +100,7 @@ export default {
             let res = await $ajax('userrechargeimages', {image: img})
             if(!res) return false
             console.log(res)
-            this.baseimg = res.img
+            // this.baseimg = res.img
 
         },
         changenav(type) {
@@ -129,6 +133,9 @@ export default {
             console.log(res)
             Toast(res.msg)
             this.$router.go(-1)
+        },
+        showPopup() {
+            this.show = true;
         }
     }
 };

@@ -5,9 +5,9 @@
             <p>汇款详情</p>
             <!-- <span @click="cancle">取消订单</span> -->
         </div>
-        <div style="height:12vw"></div>
+        <div style="height:13vw"></div>
         <div class="top">
-            <div class="time">请在30分钟内联系承兑商完成转账</div>
+            <div class="time" v-if="!name">请在30分钟内联系承兑商完成转账</div>
             <!-- <div class="tips">建议使用本人名下的银行卡进行转账</div> -->
         </div>
         <!-- <div class="order_info flex ali_center">
@@ -30,6 +30,7 @@
             <div class="title flex ali_center">
                 <img src="@/assets/images/icon/jyjl.png" alt="" />
                 <span>承兑商</span>
+                <div style="margin-left:20%;"><van-icon @click="replay" name="replay" size="20" /></div>
             </div>
             <div class="item flex ali_center flex_between">
                 <div class="left">充值金额</div>
@@ -55,7 +56,7 @@
             <div class="item flex ali_center flex_between" v-if="acce_img">
                 <div class="left">承兑商收款码</div>
                 <div class="right flex ali_center">
-                    <span class="infos" @click="showPopup"><img :src="acce_img" alt=""></span>
+                    <span class="infos" @click="showPopup(acce_img)"><img :src="acce_img" alt=""></span>
                     <!-- <span class="copy" :data-clipboard-text="bankname">复制</span> -->
                 </div>
             </div>
@@ -72,10 +73,10 @@
                 <div class="title">转款卡主姓名</div>
                 <input v-model="zhuanname" type="text" placeholder="请输入卡主姓名" />
             </div> -->
-            <div  class="img flex flex_between ali_center">
+            <div  class="img flex flex_between ali_center" >
                 <div class="title">完成转账截图</div>
                 <van-uploader :after-read="afterRead" v-if="!baseimg" />
-                <img :src="baseimg" alt="" v-if="baseimg" >
+                <img @click="showPopup(baseimg)" :src="baseimg" alt="" v-if="baseimg" >
             </div>
         </div>
         <!-- <div class="tip">
@@ -84,8 +85,8 @@
             <div class="grey">2.如有任何疑问请联系矿金所官方客服(请在工作日9：00-18：00之间完成充值)</div>
             <div class="grey">1.仅支持储蓄卡充值</div>
         </div> -->
-        <van-popup v-model="show"><img :src="acce_img" alt="" style="width:100%;height:100%;"></van-popup>
-        <div class="submit" :class="{on: money}" @click="submit">我已付款成功</div>
+        <van-popup v-model="show"><img :src="showPopupimg" alt="" style="width:100%;height:100%;"></van-popup>
+        <div class="submit" :class="{on: money}" @click="submit" v-if="!name">我已付款成功</div>
     </div>
 </template>
 <script>
@@ -113,6 +114,9 @@ export default {
             acce_img:"", 
             acce_id:"",
             show:false,
+            name:"",
+            showPopupimg:"",
+            // image:"",
 
 
         };
@@ -126,6 +130,8 @@ export default {
             // this.num =  this.$route.query.num
             // this.money = this.$route.query.money
             this.id = this.$route.query.id
+            this.name = this.$route.query.qufenname
+            console.log(this.name)
             if(this.id){
                 let res = await $ajax('userrechargevoucherFC', {lid: this.id})
                 if(!res) return false
@@ -134,6 +140,7 @@ export default {
                 Object.keys(res).forEach((key) => {
                     this[key] = res[key]
                 })
+                this.baseimg = res.image
             }
             
         },
@@ -212,8 +219,19 @@ export default {
             //  this.dontPay()
             this.$router.go(-1)
         },
-        showPopup() {
+        async replay(){
+            let id = this.$route.query.id
+            let res = await $ajax('userrechargerefreshFC', {id: id})  //充值
+            if(!res) return false
+            console.log(res)
+            this.acce_id = res.id
+            this.acce_mobile = res.mobile
+            
+
+        },
+        showPopup(img) {
             this.show = true;
+            this.showPopupimg = img
         },
     }
 };
@@ -327,6 +345,10 @@ export default {
                     max-width: 40vw;
                     color: #333;
                     font-weight: 600;
+                    img{
+                        max-width: 40vw;
+                        height: 40vw;
+                    }
                 }
                 .copy {
                     margin-left: 3vw;

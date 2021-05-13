@@ -154,8 +154,12 @@ export default {
         closeservice(e) {
             this.showService = false;
         },
+        isInteger(obj) {
+            return typeof obj === 'number' && obj%1 === 0
+        },
         async submit() {
-            if(!this.num) return Toast("请输入数量!")
+            let num = Number(this.num)
+            if(!this.isInteger(num)) return Toast("请输入整数!")
             if(!this.wallet) return Toast("输入转账地址!")
             let type = this.type.toLowerCase()
             if(type == "cny"){

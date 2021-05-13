@@ -2,10 +2,10 @@
 function mistake (data) {
     // 如果返回的数据, 不是 json
     if ( typeof data !== 'object') {
-        Dialog.alert({
-            title: '服務器錯誤',
-            message: 'server data type not is JSON'
-        })
+        // Dialog.alert({
+        //     title: '服務器錯誤',
+        //     message: 'server data type not is JSON'
+        // })
         return true //發生錯誤
     }
     if (parseInt(data.status) !== 1) {
@@ -367,6 +367,7 @@ export default {
     userrechargelogs(data) {
         if ( mistake(data) ) return false
         let {list} = data.result
+        
         return{
             list
         }
@@ -610,9 +611,9 @@ export default {
     },
     userrechargesetFC(data){
         if ( mistake(data) ) return false
-        let {message} = data.result
+        let {id} = data.result
         return {
-            msg: message
+            id
         }
     },
     userrechargerefreshFC(data){
@@ -693,12 +694,13 @@ export default {
     },
     userrechargevoucherFC(data){
         if ( mistake(data) ) return false
-        let {money, acce_mobile, acce_img, acce_id} = data.result.info
+        let {money, acce_mobile, acce_img, acce_id,image} = data.result.info
         return{
             money, 
             acce_mobile, 
             acce_img, 
-            acce_id
+            acce_id,
+            image
         }
     },
     userrechargevoucherSet(data){

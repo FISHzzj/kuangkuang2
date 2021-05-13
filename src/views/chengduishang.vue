@@ -19,26 +19,26 @@
                 <div
                 class="item" 
                
-                v-for="(item,index) in list" :key="index" @click="gonext(item.id, item.money, item.realname)">
+                v-for="(item,index) in list" :key="index" @click="gonext(item.id, item.money, item.realname, item.image)">
                     <div class="top flex ali_center flex_between">
                         <div class="time">{{item.createtime}}</div>
                         <div class="status">{{item.text}}</div>
                     </div>
                     <div class="bottom flex ali_center">
-                        <div class="left">
+                        <!-- <div class="left">
                             <div class="type">金额</div>
                             <div class="num">+{{item.money}}</div>
-                        </div>
+                        </div> -->
                         <div class="right">
                             
                             <div class="flex item1 flex_between ali_center">
                                 <span>姓名</span>
                                 <p>{{item.realname}}</p>
                             </div>
-                            <!-- <div class="flex flex_between ali_center">
-                                <span>订单</span>
-                                <p>{{item.ordersn}}</p>
-                            </div> -->
+                            <div class="flex flex_between ali_center">
+                                <span>金额</span>
+                                <p>+{{item.money}}</p>
+                            </div>
                         </div>
                     </div>
                 </div >
@@ -124,7 +124,7 @@ export default {
                 this.finished = true //加载完成
             } 
         },
-        gonext(id, money, name){
+        gonext(id, money, name, image){
             //  :to="{name:'recordDetail', query: {id: item.id}}"
             // if(text == '待充值'){
                 this.$router.push({
@@ -132,7 +132,8 @@ export default {
                     query: {
                         id,
                         money,
-                        name
+                        name,
+                        image
                     }
                 })
             // }else{
@@ -231,8 +232,10 @@ export default {
                     }
                 }
                 .right {
-                    width: 40%;
-                    font-size: 3.2vw;
+                    // width: 40%;
+                    // font-size: 3.2vw;
+                    width: 100%;
+                    font-size: 4.2vw;
                     .num {
                         font-size: 6vw;
                         font-weight: 600;

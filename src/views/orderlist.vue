@@ -40,12 +40,23 @@
                             <span class="status" v-if="item.status == 3">已终止</span>
                         </div>
                         <div v-if="item.status == 2 || item.status == 3">
-                            <div class="infos flex flex_between ali_center" >
+                            <!-- <div class="infos flex flex_between ali_center" >
                                 <div class="name">{{item.goodsName}}</div>
                                 <div class="num">X{{item.total}}</div>
+                            </div> -->
+                            <div class="daipay flex ali_center">
+                                <div class="daipayimg"><img :src="item.thumb" alt=""></div>
+                                <div class="righttitle flex" style="margin-left:10px;">
+                                    <div style="margin-bottom: 5px;color: #adabab;">   
+                                        <p>{{item.goodsName}}</p>
+                                        <p>X{{item.total}}</p>
+                                    </div>
+                                    <!-- <div >下单日：{{item.createtime}}</div> -->
+                                    <div class="buy_time">购买日：{{item.createtime}}</div>
+                                    <div class="buy_time">支付方式：{{item.paytype}}</div>
+                                </div>
                             </div>
-                            <div class="buy_time">购买日：{{item.createtime}}</div>
-                            <div class="buy_time">支付方式：{{item.paytype}}</div>
+                            
                             <div class="bottom flex ali_center flex_between">
                                 <div class="left">总价<span>{{item.realprice}}</span>{{item.paytype}}</div>
                                 <!-- <div class="right flex ali_center">

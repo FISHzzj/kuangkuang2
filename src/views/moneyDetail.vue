@@ -62,7 +62,7 @@
                 <van-icon name="exchange" color="blue" />
                 <span>兑换</span>
             </div>
-            <div class="cash" :class="{on:type == 'FIL'}" v-if="type == 'FIL'" @click="$router.push('/cash')">提现</div>
+            <div class="cash" :class="{on:type == 'FIL'}" v-if="type == 'FIL'" @click="$router.push('/exchangechu/FIL/转出')">提现</div>
             <div class="huzhuan" :class="{on:type == 'FC'}" v-if="type == 'FC'" @click="$router.push('/huzhuan')">互转</div>
             <div class="recharge" :class="{on:type == 'USDT' || type == 'FC'}" v-if="type == 'USDT' || type == 'FC'" @click="gorecharge">充值</div>
         </div>

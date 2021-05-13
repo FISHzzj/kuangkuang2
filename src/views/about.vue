@@ -9,13 +9,13 @@
             <div class="version">V4.3.0</div>
         </div>
         <div class="list">
-            <div class="copy item flex flex_between ali_center" :data-clipboard-text="custMobile">
+            <!-- <div class="copy item flex flex_between ali_center" :data-clipboard-text="custMobile">
                 <div class="left">客服电话</div>
                 <div class="right flex ali_center">
                     <span>{{custMobile}}</span>
                     <van-icon name="arrow" color="#999" />
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="copy item flex flex_between ali_center" data-clipboard-text="0000000">
                 <div class="left">微信公众号</div>
                 <div class="right flex ali_center">
@@ -23,10 +23,10 @@
                     <van-icon name="arrow" color="#999" />
                 </div>
             </div> -->
-            <div @click="showService = true" class="item flex flex_between ali_center">
+            <!-- <div @click="showService = true" class="item flex flex_between ali_center">
                 <div class="left">添加客服微信号</div>
                 <van-icon name="arrow" color="#999" />
-            </div>
+            </div> -->
             <div class="item flex flex_between ali_center" @click="$router.push('/content/1')">
                 <div class="left">服务协议</div>
                 <van-icon name="arrow" color="#999" />

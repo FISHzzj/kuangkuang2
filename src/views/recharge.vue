@@ -19,7 +19,7 @@
         </div>
         <div class="buy_num" style="text-align:left;color:#333;padding-left:67%;">
             <div class="title" style="line-height:20px">1FC=7元人民币</div>
-            <div class="title" style="line-height:15px">1FC=1FIC</div>
+            <!-- <div class="title" style="line-height:15px">1FC=1FIC</div> -->
             
         </div>
         <div class="buy_num">
@@ -108,16 +108,18 @@ export default {
             let res = await $ajax('userrechargesetFC', {money: num})  //充值
             if(!res) return false
             console.log(res)
-            Toast(res.msg)
+            // Toast(res.msg)
             this.num = ''
-            // this.$router.push({
-            //     name: "huiMoney",
-            //     query: {
-            //         // money: paynum,
-            //         num : num,
-            //         money : this.paynum
-            //     }
-            // })
+            let id = res.id
+            this.$router.push({
+                name: "huiMoney",
+                query: {
+                    id: id
+                    // money: paynum,
+                    // num : num,
+                    // money : this.paynum
+                }
+            })
         }
     }
 };

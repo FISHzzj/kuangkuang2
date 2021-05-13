@@ -90,7 +90,7 @@
                     force-ellipses
                 /> -->
             </div>
-            <div class="touchservice">联系客服</div>
+            <!-- <div class="touchservice">联系客服</div> -->
         </div>
     </div>
 </template>
