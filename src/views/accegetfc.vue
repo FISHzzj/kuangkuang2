@@ -9,7 +9,11 @@
         <div class="pays">
             <div class="num flex flex_between ali_center">
                 <div class="title">金额</div>
-                <input v-model="num" type="text" placeholder="输入金额"  disabled />
+                <div style="white-space: nowrap;">
+                    <input v-model="num" type="text" placeholder="输入金额"  disabled  style="width:130%" /> FC
+                </div>
+                
+                
             </div>
              <div class="num flex flex_between ali_center">
                 <div class="title">姓名</div>
