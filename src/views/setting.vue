@@ -42,7 +42,9 @@
                 <div class="label">身份认证</div>
                 <div class="right flex ali_center">
                     <span class="realname_1" v-if="sf_type == '1'">已实名</span>
+                    <span class="realname_1" v-else-if="sf_type == '-1'">待审核</span>
                     <span class="realname_1" v-else>未实名</span>
+
                     <van-icon name="arrow" />
                 </div>
             </div>

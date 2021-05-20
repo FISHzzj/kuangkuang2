@@ -58,6 +58,7 @@ export default {
     userlog: `${common}do=mobile&r=user.log`, //财务记录
     kuangfooterText: `${common}do=mobile&r=kuang.footerText`, //互动内容
     userlogfil: `${common}do=mobile&r=user.log.fil`, //fil释放记录
+    userchangepwd: `${common}do=mobile&r=user.changepwd`, //重置登录/交易密码
     accountverifycode: `${common}do=mobile&r=account.verifycode`, //fil释放记录
 
     //拼团

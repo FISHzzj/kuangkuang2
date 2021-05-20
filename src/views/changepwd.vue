@@ -130,9 +130,7 @@ export default {
                 // localStorage.setItem('openid', res.openid)
                 // // localStorage.setItem('ip', res.ip)
                 // localStorage.setItem('mobile', mobile)
-                this.$router.push({
-                    name: 'index'
-                })
+                this.$router.go(-1)
             // } else {
             //     this.posiX = 13;
             // }

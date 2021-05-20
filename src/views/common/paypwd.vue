@@ -7,10 +7,14 @@
             </div>
             <div class="title">交易密码</div>
             <div class="flex input ali_center flex_between">
-                <input v-model="pwd" type="text" placeholder="输入资金密码" />
+                <!-- <input v-model="pwd" type="text" placeholder="输入资金密码" /> -->
+                <input v-if="iconeyeclose" type="text" v-model="pwd" placeholder="输入资金密码">
+                <input v-else type="password" v-model="pwd" placeholder="输入资金密码">
+                <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
+                <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i>
                 <div class="btn" @click="submit">确定</div>
             </div>
-            <div class="forget">忘记密码?</div>
+            <div class="forget" @click="forgethandle">忘记密码?</div>
         </div>
     </div>
 </template>
@@ -26,6 +30,7 @@ export default {
     data() {
         return {
             pwd: "",
+            iconeyeclose: false,
             // status: "",
         };
     },
@@ -47,6 +52,11 @@ export default {
         close() {
             this.$emit("close", true);
         },
+        forgethandle(){
+            this.$router.push({
+                name:'safe'
+            })
+        }
     }
 };
 </script>
@@ -99,6 +109,7 @@ export default {
                 background: #da428d;
             }
         }
+        
         .forget {
             color: #da428d;
             font-size: 3.47vw;
