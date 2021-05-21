@@ -39,7 +39,7 @@
             >
                 <div class="title flex ali_center flex_between">
                     <p><span>*</span>{{typeName}}</p>
-                    <van-icon name="scan" size="20" />
+                    <!-- <van-icon name="scan" size="20" /> -->
                 </div>
                 <input class="address" type="text" :placeholder="'请输入' + type + '钱包地址'" v-model="address" />
             </div>
