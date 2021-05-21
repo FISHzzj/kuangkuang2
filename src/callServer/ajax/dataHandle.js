@@ -710,6 +710,13 @@ export default {
             msg: message
         }
     },
+    userchangepwd(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
 
 
 

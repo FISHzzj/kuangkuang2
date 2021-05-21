@@ -59,6 +59,8 @@ export default {
     kuangfooterText: `${common}do=mobile&r=kuang.footerText`, //互动内容
     userlogfil: `${common}do=mobile&r=user.log.fil`, //fil释放记录
     accountverifycode: `${common}do=mobile&r=account.verifycode`, //fil释放记录
+    userchangepwd: `${common}do=mobile&r=user.changepwd`, //重置登录/交易密码
+
 
     //拼团
     groupgoods: `${common}do=mobile&r=group.goods`, //活动列表
