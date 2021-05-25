@@ -127,13 +127,13 @@ export default {
     },
     methods: {
         async getData() {
-            // this.num =  this.$route.query.num
+            this.num =  this.$route.query.num
             // this.money = this.$route.query.money
-            this.id = this.$route.query.id
-            this.name = this.$route.query.qufenname
-            console.log(this.name)
-            if(this.id){
-                let res = await $ajax('userrechargevoucherFC', {lid: this.id})
+            // this.id = this.$route.query.id
+            // this.name = this.$route.query.qufenname
+            // console.log(this.name)
+            if(this.num){
+                let res = await $ajax('userrechargevoucherFC', {money: this.num})
                 if(!res) return false
                 // this.money = res.money
        
@@ -208,10 +208,14 @@ export default {
             let res = await $ajax('userrechargevoucherSet', {
                 // getType: 1,
                 image: this.baseimg,
+                acce_id:this.acce_id,
+                acce_img: this.acce_img,
+                acce_mobile: this.acce_mobile,
+                money: this.num,
                 // money: this.money,
                 // realname: this.zhuanname,
                 // accountType: '1',
-                lid: this.id,
+                // lid: this.id,
             })
             if(!res) return false
             console.log(res)
