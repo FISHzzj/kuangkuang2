@@ -27,7 +27,7 @@
             <div class="bottom flex flex_between ali_center">
                 <div class="left">
                     <div class="type">可用</div>
-                    <div class="num">{{money}}</div>
+                    <div class="num">{{usdt_with}}</div>
                 </div>
                 <!-- <div class="right" v-if="type != 'CNY'">
                     <div class="type">折合(CNY)</div>
@@ -86,6 +86,7 @@ export default {
             tocny: '',
             fil_frozen: "",
             fil_sys: "",
+            usdt_with: "",
         };
     },
     created() {

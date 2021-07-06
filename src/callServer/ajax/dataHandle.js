@@ -111,7 +111,7 @@ export default {
     },
     userInfowallet(data){
         if ( mistake(data) ) return false
-        let {fc, fic, fil, loyalty, mobile, sysmoney, usdt, huilv} = data.result.wallet
+        let {fc, fic, fil, loyalty, mobile, sysmoney, usdt, huilv, usdt_with} = data.result.wallet
         return {
             fc, 
             fic, 
@@ -120,7 +120,8 @@ export default {
             mobile, 
             sysmoney, 
             usdt,
-            huilv
+            huilv,
+            usdt_with,
         }
     },
     applylevel(data) {
