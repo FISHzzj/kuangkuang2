@@ -105,18 +105,18 @@ export default {
             let num = this.num
             // let paynum = this.paynum
             if(!num) return Toast('请输入您的充值数量，限整数!')
-            let res = await $ajax('userrechargesetFC', {money: num})  //充值
-            if(!res) return false
-            console.log(res)
+            // let res = await $ajax('userrechargesetFC', {money: num})  //充值
+            // if(!res) return false
+            // console.log(res)
             // Toast(res.msg)
-            this.num = ''
-            let id = res.id
+            // this.num = ''
+            // let id = res.id
             this.$router.push({
                 name: "huiMoney",
                 query: {
-                    id: id
+                    // id: id
                     // money: paynum,
-                    // num : num,
+                    num : num,
                     // money : this.paynum
                 }
             })

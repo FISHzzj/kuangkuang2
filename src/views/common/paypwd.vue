@@ -12,6 +12,10 @@
                 <input v-else type="password" v-model="pwd" placeholder="输入资金密码">
                 <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
                 <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17bafeccda77a35bd67e11d80ef5a9f68e92a812
                 <div class="btn" @click="submit">确定</div>
             </div>
             <div class="forget" @click="forgethandle">忘记密码?</div>
@@ -30,7 +34,11 @@ export default {
     data() {
         return {
             pwd: "",
+<<<<<<< HEAD
             iconeyeclose: false,
+=======
+            iconeyeclose:false
+>>>>>>> 17bafeccda77a35bd67e11d80ef5a9f68e92a812
             // status: "",
         };
     },
@@ -54,7 +62,11 @@ export default {
         },
         forgethandle(){
             this.$router.push({
+<<<<<<< HEAD
                 name:'safe'
+=======
+                name: 'safe'
+>>>>>>> 17bafeccda77a35bd67e11d80ef5a9f68e92a812
             })
         }
     }

@@ -12,9 +12,11 @@
         <!-- 顶部导航 -->
         <div class="nav flex ali_center flex_around">
             <div class="item" @click="changenav(item.id, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.id}">
-                <img :src="b" alt="" v-if="index == 0">
-                <img :src="e" alt="" v-if="index == 1">
-                <img :src="f" alt="" v-if="index == 2">
+                 <img :src="e" alt="" v-if="index == 0">
+                 <img :src="f" alt="" v-if="index == 1">
+                <img :src="x" alt="" v-if="index == 2">
+               
+                
                 <div>{{item.name}}专区</div>
             </div>
         </div>
@@ -103,7 +105,7 @@ export default {
             nav: [],
             b: require("@/assets/images/b.jpg"),
             e: require("@/assets/images/e.jpg"),
-            f: require("@/assets/images/f.jpg"),
+            x: require("@/assets/images/x.jpg"),
             banner: [],
         };
     },
@@ -143,19 +145,19 @@ export default {
             this.page = 1
             this.onLoad()
             if(a == 0){
-                this.b = require("@/assets/images/b_1.jpg")
+                this.x = require("@/assets/images/x.jpg")
                 // b: require("@/assets/images/b.jpg"),
-                this.e = require("@/assets/images/e.jpg")
+                this.e = require("@/assets/images/e_1.jpg")
                 this.f = require("@/assets/images/f.jpg")
                 
             }else if(a == 1){
-                this.e = require("@/assets/images/e_1.jpg")
-                this.b = require("@/assets/images/b.jpg")
+                this.e = require("@/assets/images/e.jpg")
+                this.x = require("@/assets/images/x.jpg")
             // e: require("@/assets/images/e.jpg"),
-                this.f = require("@/assets/images/f.jpg")
-            }else if(a == 2){
                 this.f = require("@/assets/images/f_1.jpg")
-                this.b = require("@/assets/images/b.jpg")
+            }else if(a == 2){
+                this.f = require("@/assets/images/f.jpg")
+                this.x = require("@/assets/images/x_1.jpg")
                 this.e = require("@/assets/images/e.jpg")
                 // f: require("@/assets/images/f.jpg"),
             }
